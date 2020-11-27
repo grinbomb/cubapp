@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 	@GetMapping("/main")
 	public String main(@RequestParam(required = false, defaultValue = "") String name, Model model) {
-		model.addAttribute("name", name);
+		model.addAttribute("name", "guest");
         return "main";
     }
 }
