@@ -2,32 +2,36 @@
 
 <@c.page>
 
-<form method="get" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
 <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputWeight">Your weight</label>
-      <input type="text" name = "weight" class="form-control" id="inputWeight">
+      <input type="number" name = "weight" autocomplete="off" class="form-control ${(errorMessageWeight??)?string('is-invalid', '')}" id="inputWeight">
+      	<#if errorValueWeight??>
+	   		<div class="alert alert-danger text-center" role="alert">
+ 				 ${errorValueWeight}
+			</div>
+		</#if>
     </div>
     <div class="form-group col-md-6">
       <label for="inputHeight">Your height</label>
-      <input type="text" name = "height" class="form-control" id="inputHeight">
-    </div>
+      <input type="number" name = "height" autocomplete="off" class="form-control ${(errorMessageHeight??)?string('is-invalid', '')}" id="inputHeight">
+      	<#if errorValueHeight??>
+	   		<div class="alert alert-danger text-center" role="alert">
+ 				 ${errorValueHeight}
+			</div>
+		</#if>
+	</div>
   </div>
-  <#if errorMessage??>
- <div class="alert alert-${errorTypeData}" role="alert">${errorMessage}</div>
- </#if>
+  	
 <div class="custom-control custom-radio custom-control-inline">
   <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline1">ectomorph</label>
+  <label class="custom-control-label" for="customRadioInline1">female</label>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
   <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline2">mesomorph</label>
+  <label class="custom-control-label" for="customRadioInline2">male</label>
 </div>
-<div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline3">endomorph</label>
-</div> 
   <button type="submit" class="btn btn-primary">Calculate</button>
 </form>
 <#if sum??>
