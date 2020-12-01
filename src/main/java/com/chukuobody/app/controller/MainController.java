@@ -16,12 +16,15 @@ public class MainController {
 	
 	@PostMapping("/calculator")
 	public String calculate(
-			@RequestParam(required = false, defaultValue = "") String weight,
-			@RequestParam(required = false, defaultValue = "") String height, Model model) 
+			@RequestParam String weight,
+			@RequestParam String height,
+			@RequestParam String age,
+			Model model) 
 	{
-		if(weight.isEmpty()||height.isEmpty()) {
+		if(weight.isEmpty()||height.isEmpty()||age.isEmpty()) {
 			if(weight.isEmpty())model.addAttribute("errorValueWeight", "Incorrect value, weight must not be empty.");
 			if(height.isEmpty())model.addAttribute("errorValueHeight", "Incorrect value, height must not be empty.");
+			if(age.isEmpty())model.addAttribute("errorValueAge", "Incorrect value, height must not be empty.");
 			
 			return "calculator";
 		}
