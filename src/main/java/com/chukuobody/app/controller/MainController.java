@@ -1,5 +1,8 @@
 package com.chukuobody.app.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,15 +32,22 @@ public class MainController {
 			@RequestParam(defaultValue = "") String sex,
 			Model model) 
 	{
-		if(weight.isEmpty()||height.isEmpty()||age.isEmpty()||intensity.isEmpty()||(sex.isEmpty())) {
-			if(weight.isEmpty())model.addAttribute("errorValueWeight", "Weight must not be empty.");
-			if(height.isEmpty())model.addAttribute("errorValueHeight", "Height must not be empty.");
-			if(age.isEmpty())model.addAttribute("errorValueAge", "Age must not be empty.");
-			if(intensity.isEmpty())model.addAttribute("errorValueIntensity", "Intensity must not be empty.");
-			if(sex.isEmpty())model.addAttribute("errorValueGender", "Gender must not be empty.");
-			
+		
+		Map<String, String> errorList = new HashMap<String, String>();
+		
+		if(weight.isEmpty())errorList.put("errorValueWeight", "Weight must not be empty.");
+		if(height.isEmpty())errorList.put("errorValueHeight", "Height must not be empty.");
+		if(age.isEmpty())errorList.put("errorValueAge", "Age must not be empty.");
+		if(intensity.isEmpty())errorList.put("errorValueIntensity", "Intensity must not be empty.");
+		if(sex.isEmpty())errorList.put("errorValueGender", "Gender must not be empty.");
+		
+		if(!errorList.isEmpty()) {
+			for(Map.Entry<String, String> entry : errorList.entrySet()) {
+				model.addAttribute(entry.getKey(), entry.getValue());
+			}
 			return "calculator";
 		}
+		
 		int genderConst = 0;
 		if(sex.equals("male")) genderConst = 5;
 		else if(sex.equals("female")) genderConst = -161;
@@ -61,7 +71,7 @@ public class MainController {
 			break;
 		}
 		
-		double calories = intensityConst * ( 10*Integer.parseInt(weight) + 6.25*Integer.parseInt(height) + 5*Integer.parseInt(age) ),
+		double calories = intensityConst * ( 10*Integer.parseInt(weight) + 6.25*Integer.parseInt(height) - 5*Integer.parseInt(age) + genderConst),
 				proteins = (calories*0.48)/4.1,
 				fats = (calories*0.22)/9.29,
 				carbohydrates = (calories*0.30)/4.1;
