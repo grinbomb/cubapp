@@ -1,9 +1,9 @@
 <#macro page>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
     <meta charset="UTF-8">
-    <title>Sweater</title>
+    <title>CUB</title>
     <link rel="stylesheet" href="/static/style.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,9 +11,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
-<body>
+<body style="background-image: url('https://kartinkinaden.ru/uploads/posts/2020-07/thumbs/1593744871_74-p-zheltie-foni-v-polosku-80.png'); background-size: cover; height: 100%;">
 <#include "navbar.ftl">
-<div class="container mt-5">
+
+<div class="container pt-5" style="background-color:#E7EEFB; background-size: cover; min-height: 100%; box-sizing: border-box; ">
 <#nested>
 </div>
 <!-- Optional JavaScript -->

@@ -78,7 +78,7 @@
 </form>
 
 <#if calories??>
-<div class="alert alert-primary mt-2" role="alert">
+<div class="alert alert-success mt-2" role="alert">
  For optimal weight loss or maintenance of normal weight, you need to consume <strong>${calories}</strong> calories daily.
 </div>
 </#if>
