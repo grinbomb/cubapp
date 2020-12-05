@@ -37,13 +37,13 @@
   
   	<div class = "form-group col-md-4">
   	<label>Choose your gender</label>
-  	<div class="form-control ${(errorValueGender??)?string('is-invalid', '')}">
-		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  			<label class="btn btn-outline-warning">
-    			<a class="sexradio"><input type="radio" name="sex" id="male" value="male"> Male</a>
+  	
+		<div class="btn-group btn-group-toggle px-0 py-0 form-control ${(errorValueGender??)?string('is-invalid', '')}" style="width:100%;" data-toggle="buttons">
+  			<label class="btn btn-outline-warning" style="min-width: 50%;">
+    			<input type="radio" name="sex" id="male" value="male"> Male
   			</label>
-  			<label class="btn btn-outline-danger">
-    			<a class="sexradio"><input type="radio" name="sex" id="female" value="female"> Female</a>
+  			<label class="btn btn-outline-danger" style="min-width: 50%;">
+    			<input type="radio" name="sex" id="female" value="female"> Female
   			</label>
 		</div>
 		<#if errorValueGender??>
@@ -51,8 +51,6 @@
  				 ${errorValueGender}
 			</div>
 		</#if>
-	</div>
-	
 	</div>
 	<div class = "form-group col-md-8">
 		<label>Choose your daily intensity</label>

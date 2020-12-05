@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
-	@GetMapping("/main")
+	@GetMapping("/")
 	public String main(@RequestParam(required = false, defaultValue = "") String name, Model model) {
 		model.addAttribute("name", name);
         return "main";
