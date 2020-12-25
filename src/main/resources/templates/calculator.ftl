@@ -98,5 +98,118 @@
     </tr>
   </tbody>
 </table>
+
+<div id="accordion" ng-app>
+<label>Input something:</label>
+<input type="text" ng-model="name">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Breakfast 
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+      	<div class="card-body">
+      	<div style="margin-bottom: 1%;">
+      	Select the categories you would like to compose your breakfast menu: 
+      	</div>
+      	<div class="form-row">
+      		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Main dish
+  				</label>
+			</div>
+			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Fruits
+  				</label>
+			</div>
+			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Toast
+  				</label>
+			</div>
+		</div>
+        Menu {{name}}
+        </div>
+    </div>
+    
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Lunch
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+      <div class="card-body">
+      
+        <div style="margin-bottom: 1%;">
+      	Select the categories you would like to compose your lunch menu: 
+      	</div>
+      	<div class="form-row">
+      		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Garnish
+  				</label>
+			</div>
+			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Meat / poultry
+  				</label>
+			</div>
+			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Fish
+  				</label>
+			</div>
+		</div>
+      
+        Menu {{name}}
+        </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Dinner
+        </button>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+      <div class="card-body">
+      
+      <div style="margin-bottom: 1%;">
+      	Select the categories you would like to compose your dinner menu: 
+      	</div>
+      	<div class="form-row">
+      		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Garnish
+  				</label>
+			</div>
+			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Meat / poultry
+  				</label>
+			</div>
+			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  				<label class="btn btn-outline-info">
+    				<input type="checkbox" checked autocomplete="off"> Fish
+  				</label>
+			</div>
+		</div>
+      
+        Menu {{name}}
+        </div>
+    </div>
+  </div>
+</div>
 </#if>
 </@c.page>
