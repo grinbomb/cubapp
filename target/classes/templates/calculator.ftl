@@ -100,8 +100,11 @@
 </table>
 
 <div id="accordion" ng-app>
+
 <label>Input something:</label>
 <input type="text" ng-model="name">
+
+<!-- Pop-up area for BREAKFAST menu -->
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
@@ -110,7 +113,7 @@
         </button>
       </h5>
     </div>
-
+	<!-- Menu selections area for BREAKFAST -->
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
       	<div class="card-body">
       	<div style="margin-bottom: 1%;">
@@ -135,9 +138,12 @@
 		</div>
         Menu {{name}}
         </div>
+        <!-- Menu selections area for BREAKFAST IS OVER-->
     </div>
-    
   </div>
+  <!-- Pop-up area for BREAKFAST menu IS OVER -->
+  
+  <!-- Pop-up area for LUNCH menu -->
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
@@ -148,32 +154,51 @@
     </div>
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
       <div class="card-body">
-      
+      <!-- Menu selections area for LUNCH -->
         <div style="margin-bottom: 1%;">
       	Select the categories you would like to compose your lunch menu: 
       	</div>
       	<div class="form-row">
+      	<div data-toggle="collapse" data-target="#garnishchoice">
       		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
   				<label class="btn btn-outline-info">
     				<input type="checkbox" checked autocomplete="off"> Garnish
   				</label>
 			</div>
+		</div>
+		<div data-toggle="collapse" data-target="#meatpoultrychoice">
 			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
   				<label class="btn btn-outline-info">
     				<input type="checkbox" checked autocomplete="off"> Meat / poultry
   				</label>
 			</div>
+		</div>
+			<div data-toggle="collapse" data-target="#fishchoice">
 			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
+			
+  				<label class="btn btn-outline-info" data-toggle="collapse">
     				<input type="checkbox" checked autocomplete="off"> Fish
   				</label>
+  				</div>
 			</div>
 		</div>
-      
+		<div class="collapse" id="garnishchoice">
+		GARNISH GARNISH GARNISH GARNISH GARNISH 
+		</div>
+		<div class="collapse" id="meatpoultrychoice">
+		MEAT POULTRY MEAT POULTRY MEAT POULTRY 
+		</div>
+		<div class="collapse" id="fishchoice">
+		FISH FISH FISH FISH FISH FISH FISH FISH 
+		</div>
         Menu {{name}}
         </div>
+        <!-- Menu selections area for LUNCH IS OVER-->
     </div>
   </div>
+  <!-- Pop-up area for LUNCH menu IS OVER-->
+  
+  <!-- Pop-up area for DINNER menu -->
   <div class="card">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
@@ -184,7 +209,7 @@
     </div>
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
       <div class="card-body">
-      
+      <!-- Menu selections area for DINNER-->
       <div style="margin-bottom: 1%;">
       	Select the categories you would like to compose your dinner menu: 
       	</div>
@@ -205,11 +230,12 @@
   				</label>
 			</div>
 		</div>
-      
         Menu {{name}}
         </div>
+       <!-- Menu selections area for DINNER IS OVER-->
     </div>
   </div>
+  <!-- Pop-up area for DINNER menu -->
 </div>
 </#if>
 </@c.page>

@@ -1,7 +1,13 @@
-angular.module('demo', [])
-.controller('Hello', function($scope, $http) {
-    $http.get('http://rest-service.guides.spring.io/greeting').
-        then(function(response) {
-            $scope.greeting = response.data;
-        });
-});
+var app = angular.module("loadMenu",[]);
+
+app.controller("loadMenuController", function($scope){
+$scope.eats = [];
+
+$http.get('http://localhost:8080/api/calculator').success(function(data){
+	$scope.eats = data;
+})
+
+
+
+eat
+}); 
