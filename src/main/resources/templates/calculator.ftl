@@ -99,13 +99,13 @@
   </tbody>
 </table>
 
-<div id="accordion" ng-app>
+<div id="accordion" ng-app="AppMenu">
 
 <label>Input something:</label>
 <input type="text" ng-model="name">
 
 <!-- Pop-up area for BREAKFAST menu -->
-  <div class="card">
+  <div class="card" >
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -114,7 +114,8 @@
       </h5>
     </div>
 	<!-- Menu selections area for BREAKFAST -->
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne">
+	
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" ng-controller = "AppController"> <!-- NG-CONTROLLER STARTS HERE -->
       	<div class="card-body">
       	<div style="margin-bottom: 1%;">
       	Select the categories you would like to compose your breakfast menu: 
@@ -122,12 +123,13 @@
       	<div class="form-row">
       		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
   				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Main dish
+    				<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value1"> Main dish
   				</label>
 			</div>
 			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
   				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Fruits
+    				<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value2"
+    				ng-true-value="'YES'" ng-false-value="'NO'"> Fruits
   				</label>
 			</div>
 			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
@@ -136,7 +138,8 @@
   				</label>
 			</div>
 		</div>
-        Menu {{name}}
+		Main dish = {{checkboxModel.value1}}
+		Fruits = {{checkboxModel.value2}}
         </div>
         <!-- Menu selections area for BREAKFAST IS OVER-->
     </div>

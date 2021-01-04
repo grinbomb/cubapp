@@ -1,13 +1,9 @@
-var app = angular.module("loadMenu",[]);
+var myApp = angular.module('AppMenu');
+myApp.controller('AppController', function ($scope) {
 
-app.controller("loadMenuController", function($scope){
-$scope.eats = [];
+$scope.checkboxModel = {
+       value1 : true,
+       value2 : 'YES'
+     };
 
-$http.get('http://localhost:8080/api/calculator').success(function(data){
-	$scope.eats = data;
-})
-
-
-
-eat
-}); 
+});
