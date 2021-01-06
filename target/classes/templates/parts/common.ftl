@@ -31,15 +31,20 @@
 <!--<script src="/src/main/resources/scripts/app.js"></script> -->
 
 <script>
-
 var myApp = angular.module('AppMenu',[]);
-myApp.controller('AppController', function ($scope) {
+myApp.controller('AppController', function ($scope, $http) {
 
+$scope.testeat = [];
+	
 $scope.checkboxModel = {
-       value1 : true,
-       value2 : 'YES'
+       value1 : false,
+       value2 : 'NO'
      };
-
+$scope.change = function(){
+	$http.post('http://localhost:8080/api/calculator').then(function(response){
+    	 $scope.testeat = response.data;
+     });};
+     
 });
 </script>
 

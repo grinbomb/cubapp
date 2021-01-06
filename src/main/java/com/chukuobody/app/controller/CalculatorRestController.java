@@ -6,19 +6,18 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.chukuobody.app.model.EatCard;
+
 @RestController
 @RequestMapping("/api/calculator")
 public class CalculatorRestController {
 
 	@RequestMapping
-	public List<String> allMenu(){
-		List<String> menu = new ArrayList<String>();
+	public List<EatCard> allMenu(){
+		List<EatCard> menu = new ArrayList<EatCard>();
 		
-		menu.add("SOMEEAT1111111");
-		menu.add("SOMEEAT2222222");
-		menu.add("SOMEEAT3333333");
-		menu.add("SOMEEAT4444444");
-		menu.add("SOMEEAT5555555");
+		menu.add(new EatCard("123", "EGG", "https://pngicon.ru/file/uploads/razbitoe-jajco.png"));
+		menu.add(new EatCard("444", "BREAD", "https://clipart-db.ru/file_content/rastr/bread-008.png"));
 		
 		return menu;
 	}

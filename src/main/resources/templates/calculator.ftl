@@ -121,10 +121,12 @@
       	Select the categories you would like to compose your breakfast menu: 
       	</div>
       	<div class="form-row">
-      		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value1"> Main dish
-  				</label>
+      		<div data-toggle="collapse" data-target="#breakfastMainDishChoice">
+      			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  					<label class="btn btn-outline-info">
+    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value1" ng-change="change()"> Main dish
+  					</label>
+				</div>
 			</div>
 			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
   				<label class="btn btn-outline-info">
@@ -138,6 +140,20 @@
   				</label>
 			</div>
 		</div>
+		
+		<div class="collapse" id="breakfastMainDishChoice">
+			<div class="row">
+				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat">
+  				<img class="card-img-top" src={{item.image}} alt="Card image cap">
+  					<div class="card-body">
+    				<h5 class="card-title">{{item.name}}</h5>
+    				<p class="card-text">For example id is {{item.id}}</p>
+    				<a href="" class="btn btn-primary">CLICK</a>
+  					</div>
+				</div>
+			</div> 
+		</div>
+		
 		Main dish = {{checkboxModel.value1}}
 		Fruits = {{checkboxModel.value2}}
         </div>
