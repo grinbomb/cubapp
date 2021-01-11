@@ -118,32 +118,37 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" ng-controller = "AppController"> <!-- NG-CONTROLLER STARTS HERE -->
       	<div class="card-body">
       	<div style="margin-bottom: 1%;">
-      	Select the categories you would like to compose your breakfast menu: 
+      	<h4>Select the categories you would like to compose your breakfast menu: </h4>
       	</div>
       	<div class="form-row">
       		<div data-toggle="collapse" data-target="#breakfastMainDishChoice">
       			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
   					<label class="btn btn-outline-info">
-    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value1" ng-change="change()"> Main dish
+    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value1" ng-change="change('1')"> Main dish
   					</label>
 				</div>
 			</div>
-			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value2"
-    				ng-true-value="'YES'" ng-false-value="'NO'"> Fruits
-  				</label>
+			<div data-toggle="collapse" data-target="#breakfastFruits">
+				<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  					<label class="btn btn-outline-info">
+    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value2" ng-change="change('2')"
+    					ng-true-value="'YES'" ng-false-value="'NO'"> Fruits
+  					</label>
+				</div>
 			</div>
-			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Toast
-  				</label>
+			<div data-toggle="collapse" data-target="#breakfastToast">
+				<div class="btn-group-toggle  mx-1" data-toggle="buttons">
+  					<label class="btn btn-outline-info">
+    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value3" ng-change="change('3')"> Toast
+  					</label>
+				</div>
 			</div>
 		</div>
 		
 		<div class="collapse" id="breakfastMainDishChoice">
+		<h5>Choose what you like from the main dish category:</h5>
 			<div class="row">
-				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat">
+				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat[1]">
   				<img class="card-img-top" src={{item.image}} alt="Card image cap">
   					<div class="card-body">
     				<h5 class="card-title">{{item.name}}</h5>
@@ -154,6 +159,32 @@
 			</div> 
 		</div>
 		
+		<div class="collapse" id="breakfastFruits">
+		<h5>Choose what you like from the fruits category:</h5>
+			<div class="row">
+				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat[2]">
+  				<img class="card-img-top" src={{item.image}} alt="Card image cap">
+  					<div class="card-body">
+    				<h5 class="card-title">{{item.name}}</h5>
+    				<p class="card-text">For example id is {{item.id}}</p>
+    				<a href="" class="btn btn-primary">CLICK</a>
+  					</div>
+				</div>
+			</div> 
+		</div>
+		<div class="collapse" id="breakfastToast">
+		<h5>Choose what you like from the toast category:</h5>
+			<div class="row">
+				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat[3]">
+  				<img class="card-img-top" src={{item.image}} alt="Card image cap">
+  					<div class="card-body">
+    				<h5 class="card-title">{{item.name}}</h5>
+    				<p class="card-text">For example id is {{item.id}}</p>
+    				<a href="" class="btn btn-primary">CLICK</a>
+  					</div>
+				</div>
+			</div> 
+		</div>
 		Main dish = {{checkboxModel.value1}}
 		Fruits = {{checkboxModel.value2}}
         </div>

@@ -38,11 +38,12 @@ $scope.testeat = [];
 	
 $scope.checkboxModel = {
        value1 : false,
-       value2 : 'NO'
+       value2 : 'NO',
+       value3 : false
      };
-$scope.change = function(){
-	$http.post('http://localhost:8080/api/calculator').then(function(response){
-    	 $scope.testeat = response.data;
+$scope.change = function(eatType){
+	$http.post('http://localhost:8080/api/calculator',{subject:eatType}).then(function(response){
+		$scope.testeat[eatType] = response.data;
      });};
      
 });
