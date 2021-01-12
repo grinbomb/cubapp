@@ -35,7 +35,9 @@ var myApp = angular.module('AppMenu',[]);
 myApp.controller('AppController', function ($scope, $http) {
 
 $scope.testeat = [];
-	
+
+
+
 $scope.checkboxModel = {
        value1 : false,
        value2 : 'NO',

@@ -145,43 +145,61 @@
 			</div>
 		</div>
 		
-		<div class="collapse" id="breakfastMainDishChoice">
+	<div class="collapse" id="breakfastMainDishChoice">
 		<h5>Choose what you like from the main dish category:</h5>
-			<div class="row">
-				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat[1]">
-  				<img class="card-img-top" src={{item.image}} alt="Card image cap">
-  					<div class="card-body">
+		<div class="row">
+			<div class="card m-1" style="width: 19.2%; max-height: 25%;" ng-repeat="item in testeat[1]">
+  			<img class="card-img-top" src={{item.image}} alt="Card image cap">
+  				<div class="card-body">
     				<h5 class="card-title">{{item.name}}</h5>
     				<p class="card-text">For example id is {{item.id}}</p>
-    				<a href="" class="btn btn-primary">CLICK</a>
-  					</div>
-				</div>
-			</div> 
-		</div>
+  				</div>
+  				<div class="card-footer">
+  					<div class="btn-group-toggle text-center" data-toggle="buttons">
+  						<label class="btn btn-outline-success" style="min-width:80%;">
+    						<input type="checkbox" autocomplete="off"> Select
+  						</label>
+					</div>
+  				</div>
+			</div>
+		</div> 
+	</div>
 		
 		<div class="collapse" id="breakfastFruits">
 		<h5>Choose what you like from the fruits category:</h5>
 			<div class="row">
-				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat[2]">
+				<div class="card m-1" style="width: 19.2%; min-height: 25%;" ng-repeat="item in testeat[2]">
   				<img class="card-img-top" src={{item.image}} alt="Card image cap">
   					<div class="card-body">
     				<h5 class="card-title">{{item.name}}</h5>
     				<p class="card-text">For example id is {{item.id}}</p>
-    				<a href="" class="btn btn-primary">CLICK</a>
-  					</div>
+  				</div>
+  				<div class="card-footer">
+  					<div class="btn-group-toggle text-center" data-toggle="buttons">
+  						<label class="btn btn-outline-success" style="min-width:80%;">
+    						<input type="checkbox" autocomplete="off"> Select
+  						</label>
+					</div>
+  				</div>
 				</div>
 			</div> 
 		</div>
 		<div class="collapse" id="breakfastToast">
 		<h5>Choose what you like from the toast category:</h5>
 			<div class="row">
-				<div class="card m-1" style="width: 18rem;" ng-repeat="item in testeat[3]">
+				<div class="card m-1" style="width: 19.2%; min-height: 25%;" ng-repeat="item in testeat[3]">
   				<img class="card-img-top" src={{item.image}} alt="Card image cap">
   					<div class="card-body">
     				<h5 class="card-title">{{item.name}}</h5>
     				<p class="card-text">For example id is {{item.id}}</p>
-    				<a href="" class="btn btn-primary">CLICK</a>
-  					</div>
+  				</div>
+  				<div class="card-footer">
+  					<div class="btn-group-toggle text-center" data-toggle="buttons">
+  						<label class="btn btn-outline-success" style="min-width:80%;">
+    						<input type="checkbox" autocomplete="off"> Select
+  						</label>
+					</div>
+  				</div>
 				</div>
 			</div> 
 		</div>
