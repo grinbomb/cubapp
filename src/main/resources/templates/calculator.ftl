@@ -1,11 +1,13 @@
 <#import "parts/common.ftl" as c>
+<#import "parts/productCard.ftl" as prod>
+<#import "parts/category.ftl" as cat>
 
 <@c.page>
   
 <form method="post" enctype="multipart/form-data">
 <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputWeight">Your weight</label>
+      <label for="inputWeight">Your weight <small>(in kilograms)</small></label>
       <input type="number" name = "weight" autocomplete="off" class="form-control ${(errorValueWeight??)?string('is-invalid', '')}" id="inputWeight">
       	<#if errorValueWeight??>
 	   		<div class="alert alert-danger text-center" role="alert">
@@ -14,7 +16,7 @@
 		</#if>
     </div>
     <div class="form-group col-md-4">
-      <label for="inputHeight">Your height</label>
+      <label for="inputHeight">Your height <small>(in centimeters)</small></label>
       <input type="number" name = "height" autocomplete="off" class="form-control ${(errorValueHeight??)?string('is-invalid', '')}" id="inputHeight">
       	<#if errorValueHeight??>
 	   		<div class="alert alert-danger text-center" role="alert">
@@ -23,7 +25,7 @@
 		</#if>
 	</div>
 	<div class="form-group col-md-4">
-      <label for="inputAge">Your age</label>
+      <label for="inputAge">Your age <small>(in years)</small></label>
       <input type="number" name = "age" autocomplete="off" class="form-control ${(errorValueAge??)?string('is-invalid', '')}" id="inputAge">
       	<#if errorValueAge??>
 	   		<div class="alert alert-danger text-center" role="alert">
@@ -40,10 +42,10 @@
   	
 		<div class="btn-group btn-group-toggle px-0 py-0 form-control ${(errorValueGender??)?string('is-invalid', '')}" style="width:100%;" data-toggle="buttons">
   			<label class="btn btn-outline-warning" style="min-width: 50%;">
-    			<input type="radio" name="sex" id="male" value="male"> Male
+    			<input type="radio" name="sex" id="male" value="male"> <strong>Male</strong>
   			</label>
   			<label class="btn btn-outline-danger" style="min-width: 50%;">
-    			<input type="radio" name="sex" id="female" value="female"> Female
+    			<input type="radio" name="sex" id="female" value="female"> <strong>Female</strong>
   			</label>
 		</div>
 		<#if errorValueGender??>
@@ -76,8 +78,8 @@
 </form>
 
 <#if calories??>
-<div class="alert alert-success mt-2" role="alert">
- For optimal weight loss or maintenance of normal weight, you need to consume <strong>${calories}</strong> calories daily.
+<div class="alert alert-warning mt-2" role="alert">
+ For optimal weight loss or maintenance of normal weight, you need to consume <strong style="font-size:25px;">${calories}</strong> calories daily.
 </div>
 </#if>
 
@@ -99,13 +101,12 @@
   </tbody>
 </table>
 
-<div id="accordion" ng-app="AppMenu">
+<h3>You can compose your daily diet by choosing the foods you like, and we will calculate how many PFC and calories you get in the end.</h3>
 
-<label>Input something:</label>
-<input type="text" ng-model="name">
+<div id="accordion" ng-app="AppMenu" ng-controller = "AppController">
 
 <!-- Pop-up area for BREAKFAST menu -->
-  <div class="card" >
+  <div class="card" style="background-color:#DCECFC;">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -115,96 +116,27 @@
     </div>
 	<!-- Menu selections area for BREAKFAST -->
 	
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" ng-controller = "AppController"> <!-- NG-CONTROLLER STARTS HERE -->
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"> <!-- NG-CONTROLLER STARTS HERE -->
       	<div class="card-body">
       	<div style="margin-bottom: 1%;">
       	<h4>Select the categories you would like to compose your breakfast menu: </h4>
       	</div>
       	<div class="form-row">
-      		<div data-toggle="collapse" data-target="#breakfastMainDishChoice">
-      			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  					<label class="btn btn-outline-info">
-    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value1" ng-change="change('1')"> Main dish
-  					</label>
-				</div>
-			</div>
-			<div data-toggle="collapse" data-target="#breakfastFruits">
-				<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  					<label class="btn btn-outline-info">
-    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value2" ng-change="change('2')"
-    					ng-true-value="'YES'" ng-false-value="'NO'"> Fruits
-  					</label>
-				</div>
-			</div>
-			<div data-toggle="collapse" data-target="#breakfastToast">
-				<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  					<label class="btn btn-outline-info">
-    					<input type="checkbox" checked autocomplete="off" ng-model="checkboxModel.value3" ng-change="change('3')"> Toast
-  					</label>
-				</div>
-			</div>
+      	
+      	<@cat.category datatarget="breakfastMainDishChoice" modelnameng="checkboxModel.value1" changeng="1" name="Main dish"/>
+      	<@cat.category datatarget="breakfastFruits" modelnameng="checkboxModel.value2" changeng="2" name="Fruits"/>
+      	<@cat.category datatarget="breakfastToast" modelnameng="checkboxModel.value3" changeng="3" name="Toast"/>
+      	<@cat.category datatarget="breakfastVegetables" modelnameng="checkboxModel.value4" changeng="4" name="Vegetables"/>
+      	<@cat.category datatarget="breakfastBerries" modelnameng="checkboxModel.value5" changeng="5" name="Berries"/>
+      	
+
 		</div>
 		
-	<div class="collapse" id="breakfastMainDishChoice">
-		<h5>Choose what you like from the main dish category:</h5>
-		<div class="row">
-			<div class="card m-1" style="width: 19.2%; max-height: 25%;" ng-repeat="item in testeat[1]">
-  			<img class="card-img-top" src={{item.image}} alt="Card image cap">
-  				<div class="card-body">
-    				<h5 class="card-title">{{item.name}}</h5>
-    				<p class="card-text">For example id is {{item.id}}</p>
-  				</div>
-  				<div class="card-footer">
-  					<div class="btn-group-toggle text-center" data-toggle="buttons">
-  						<label class="btn btn-outline-success" style="min-width:80%;">
-    						<input type="checkbox" autocomplete="off"> Select
-  						</label>
-					</div>
-  				</div>
-			</div>
-		</div> 
-	</div>
-		
-		<div class="collapse" id="breakfastFruits">
-		<h5>Choose what you like from the fruits category:</h5>
-			<div class="row">
-				<div class="card m-1" style="width: 19.2%; min-height: 25%;" ng-repeat="item in testeat[2]">
-  				<img class="card-img-top" src={{item.image}} alt="Card image cap">
-  					<div class="card-body">
-    				<h5 class="card-title">{{item.name}}</h5>
-    				<p class="card-text">For example id is {{item.id}}</p>
-  				</div>
-  				<div class="card-footer">
-  					<div class="btn-group-toggle text-center" data-toggle="buttons">
-  						<label class="btn btn-outline-success" style="min-width:80%;">
-    						<input type="checkbox" autocomplete="off"> Select
-  						</label>
-					</div>
-  				</div>
-				</div>
-			</div> 
-		</div>
-		<div class="collapse" id="breakfastToast">
-		<h5>Choose what you like from the toast category:</h5>
-			<div class="row">
-				<div class="card m-1" style="width: 19.2%; min-height: 25%;" ng-repeat="item in testeat[3]">
-  				<img class="card-img-top" src={{item.image}} alt="Card image cap">
-  					<div class="card-body">
-    				<h5 class="card-title">{{item.name}}</h5>
-    				<p class="card-text">For example id is {{item.id}}</p>
-  				</div>
-  				<div class="card-footer">
-  					<div class="btn-group-toggle text-center" data-toggle="buttons">
-  						<label class="btn btn-outline-success" style="min-width:80%;">
-    						<input type="checkbox" autocomplete="off"> Select
-  						</label>
-					</div>
-  				</div>
-				</div>
-			</div> 
-		</div>
-		Main dish = {{checkboxModel.value1}}
-		Fruits = {{checkboxModel.value2}}
+		<@prod.card idcss="breakfastMainDishChoice" name="main dish" productid="1"/>
+		<@prod.card idcss="breakfastFruits" name="fruits" productid="2"/>
+		<@prod.card idcss="breakfastToast" name="toast" productid="3"/>
+		<@prod.card idcss="breakfastVegetables" name="vegetables" productid="4"/>
+		<@prod.card idcss="breakfastBerries" name="berries" productid="5"/>
         </div>
         <!-- Menu selections area for BREAKFAST IS OVER-->
     </div>
@@ -212,7 +144,7 @@
   <!-- Pop-up area for BREAKFAST menu IS OVER -->
   
   <!-- Pop-up area for LUNCH menu -->
-  <div class="card">
+  <div class="card" style="background-color:#DCECFC;">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -224,50 +156,31 @@
       <div class="card-body">
       <!-- Menu selections area for LUNCH -->
         <div style="margin-bottom: 1%;">
-      	Select the categories you would like to compose your lunch menu: 
+      	<h4>Select the categories you would like to compose your lunch menu: </h4>
       	</div>
       	<div class="form-row">
-      	<div data-toggle="collapse" data-target="#garnishchoice">
-      		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Garnish
-  				</label>
-			</div>
-		</div>
-		<div data-toggle="collapse" data-target="#meatpoultrychoice">
-			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Meat / poultry
-  				</label>
-			</div>
-		</div>
-			<div data-toggle="collapse" data-target="#fishchoice">
-			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-			
-  				<label class="btn btn-outline-info" data-toggle="collapse">
-    				<input type="checkbox" checked autocomplete="off"> Fish
-  				</label>
-  				</div>
-			</div>
-		</div>
-		<div class="collapse" id="garnishchoice">
-		GARNISH GARNISH GARNISH GARNISH GARNISH 
-		</div>
-		<div class="collapse" id="meatpoultrychoice">
-		MEAT POULTRY MEAT POULTRY MEAT POULTRY 
-		</div>
-		<div class="collapse" id="fishchoice">
-		FISH FISH FISH FISH FISH FISH FISH FISH 
-		</div>
-        Menu {{name}}
+      	<@cat.category datatarget="lunchGarnish" modelnameng="checkboxModel.value6" changeng="6" name="Garnish"/>
+      	<@cat.category datatarget="lunchMeatPoultry" modelnameng="checkboxModel.value7" changeng="7" name="Meat and poultry"/>
+      	<@cat.category datatarget="lunchFish" modelnameng="checkboxModel.value8" changeng="8" name="Fish"/>
+      	<@cat.category datatarget="lunchVegetables" modelnameng="checkboxModel.value9" changeng="9" name="Vegetables"/>
+      	<@cat.category datatarget="lunchFruits" modelnameng="checkboxModel.value10" changeng="10" name="Fruits"/>
+      	<@cat.category datatarget="lunchDrinks" modelnameng="checkboxModel.value11" changeng="11" name="Drinks"/>
+
         </div>
+        <@prod.card idcss="lunchGarnish" name="garnish" productid="6"/>
+		<@prod.card idcss="lunchMeatPoultry" name="meat and poultry" productid="7"/>
+		<@prod.card idcss="lunchFish" name="fish" productid="8"/>
+		<@prod.card idcss="lunchVegetables" name="vegetables" productid="9"/>
+		<@prod.card idcss="lunchFruits" name="fruits" productid="10"/>
+		<@prod.card idcss="lunchDrinks" name="drinks" productid="11"/>
+        
         <!-- Menu selections area for LUNCH IS OVER-->
     </div>
   </div>
   <!-- Pop-up area for LUNCH menu IS OVER-->
   
   <!-- Pop-up area for DINNER menu -->
-  <div class="card">
+  <div class="card" style="background-color:#DCECFC;">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -279,26 +192,24 @@
       <div class="card-body">
       <!-- Menu selections area for DINNER-->
       <div style="margin-bottom: 1%;">
-      	Select the categories you would like to compose your dinner menu: 
+      	<h4>Select the categories you would like to compose your dinner menu: </h4>
       	</div>
       	<div class="form-row">
-      		<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Garnish
-  				</label>
-			</div>
-			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Meat / poultry
-  				</label>
-			</div>
-			<div class="btn-group-toggle  mx-1" data-toggle="buttons">
-  				<label class="btn btn-outline-info">
-    				<input type="checkbox" checked autocomplete="off"> Fish
-  				</label>
-			</div>
+      	
+      	<@cat.category datatarget="dinnerGarnish" modelnameng="checkboxModel.value12" changeng="12" name="Garnish"/>
+      	<@cat.category datatarget="dinnerMeatPoultry" modelnameng="checkboxModel.value13" changeng="13" name="Meat and poultry"/>
+      	<@cat.category datatarget="dinnerFish" modelnameng="checkboxModel.value14" changeng="14" name="Fish"/>
+      	<@cat.category datatarget="dinnerVegetables" modelnameng="checkboxModel.value15" changeng="15" name="Vegetables"/>
+      	<@cat.category datatarget="dinnerFruits" modelnameng="checkboxModel.value16" changeng="16" name="Fruits"/>
+      	<@cat.category datatarget="dinnerDrinks" modelnameng="checkboxModel.value17" changeng="17" name="Drinks"/>
+      	
 		</div>
-        Menu {{name}}
+		<@prod.card idcss="dinnerGarnish" name="garnish" productid="12"/>
+		<@prod.card idcss="dinnerMeatPoultry" name="meat and poultry" productid="13"/>
+		<@prod.card idcss="dinnerFish" name="fish" productid="14"/>
+		<@prod.card idcss="dinnerVegetables" name="vegetables" productid="15"/>
+		<@prod.card idcss="dinnerFruits" name="fruits" productid="16"/>
+		<@prod.card idcss="dinnerDrinks" name="drinks" productid="17"/>
         </div>
        <!-- Menu selections area for DINNER IS OVER-->
     </div>

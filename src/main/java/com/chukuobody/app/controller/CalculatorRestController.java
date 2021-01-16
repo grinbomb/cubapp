@@ -24,7 +24,7 @@ public class CalculatorRestController {
 		menu.add(new EatCard("222", "BREAD", "https://clipart-db.ru/file_content/rastr/bread-008.png"));
 		menu.add(new EatCard("333", "BREAKFAST CEREAL", "https://start-ukraine.com/%D0%A3%D0%BF%D0%B0%D0%BA%D0%BE%D0%B2%D0%BA%D0%B8/Cocoa_Balls.png"));
 		menu.add(new EatCard("444", "OATMEAL", "https://pngimg.com/uploads/porridge/porridge_PNG23.png"));
-		menu.add(new EatCard("777", "SPAGHETTI", "https://lh3.googleusercontent.com/proxy/wlCoEvvDSjXayDOVk2usLpWpI0CSno7derQ1dqa0JswbyhPdDO2BTMenIRJ837BKtmDfDMBcCPCnhsItyAOj4UY6Rsc"));}
+		menu.add(new EatCard("777", "SPAGHETTI", "https://pngimg.com/uploads/spaghetti/spaghetti_PNG24.png"));}
 		else if(eatType.equals("2"))
 		menu.add(new EatCard("555", "APPLE", "https://pngicon.ru/file/uploads/2_50.png"));
 		else

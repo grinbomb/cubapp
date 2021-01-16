@@ -8,17 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 </head>
 
-<body style="   color: rgb(33, 19, 55);
+<body style="   color: #055CAD;
+				background-color:#67B9F7;
     			background-size: cover; 
-    			height: 100%;"
+    			height: 100%;
+    			font-family: 'Ropa Sans', sans-serif;
+    			font-size:20px;"
 >
 
 <#include "navbar.ftl">
 
-<div class="container pt-5" style="background-color:#E7EEFB; background-size: cover; min-height: 100%; box-sizing: border-box; ">
+<div class="container pt-5" style="background-color:#B8DAFC; background-size: cover; min-height: 100%; box-sizing: border-box; ">
 <#nested>
 </div>
 <!-- Optional JavaScript -->
