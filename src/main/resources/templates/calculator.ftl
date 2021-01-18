@@ -123,11 +123,11 @@
       	</div>
       	<div class="form-row">
       	
-      	<@cat.category datatarget="breakfastMainDishChoice" modelnameng="checkboxModel.value1" changeng="1" name="Main dish"/>
-      	<@cat.category datatarget="breakfastFruits" modelnameng="checkboxModel.value2" changeng="2" name="Fruits"/>
-      	<@cat.category datatarget="breakfastToast" modelnameng="checkboxModel.value3" changeng="3" name="Toast"/>
-      	<@cat.category datatarget="breakfastVegetables" modelnameng="checkboxModel.value4" changeng="4" name="Vegetables"/>
-      	<@cat.category datatarget="breakfastBerries" modelnameng="checkboxModel.value5" changeng="5" name="Berries"/>
+      	<@cat.category datatarget="breakfastMainDishChoice" modelnameng="checkboxModel.value1" changeng="1" name="Main dish" productcategory=""/>
+      	<@cat.category datatarget="breakfastFruits" modelnameng="checkboxModel.value2" changeng="2" name="Fruits" productcategory="FRUITS"/>
+      	<@cat.category datatarget="breakfastToast" modelnameng="checkboxModel.value3" changeng="3" name="Toast" productcategory=""/>
+      	<@cat.category datatarget="breakfastVegetables" modelnameng="checkboxModel.value4" changeng="4" name="Vegetables" productcategory="VEGETABLES"/>
+      	<@cat.category datatarget="breakfastBerries" modelnameng="checkboxModel.value5" changeng="5" name="Berries" productcategory=""/>
       	
 
 		</div>
@@ -159,12 +159,12 @@
       	<h4>Select the categories you would like to compose your lunch menu: </h4>
       	</div>
       	<div class="form-row">
-      	<@cat.category datatarget="lunchGarnish" modelnameng="checkboxModel.value6" changeng="6" name="Garnish"/>
-      	<@cat.category datatarget="lunchMeatPoultry" modelnameng="checkboxModel.value7" changeng="7" name="Meat and poultry"/>
-      	<@cat.category datatarget="lunchFish" modelnameng="checkboxModel.value8" changeng="8" name="Fish"/>
-      	<@cat.category datatarget="lunchVegetables" modelnameng="checkboxModel.value9" changeng="9" name="Vegetables"/>
-      	<@cat.category datatarget="lunchFruits" modelnameng="checkboxModel.value10" changeng="10" name="Fruits"/>
-      	<@cat.category datatarget="lunchDrinks" modelnameng="checkboxModel.value11" changeng="11" name="Drinks"/>
+      	<@cat.category datatarget="lunchGarnish" modelnameng="checkboxModel.value6" changeng="6" name="Garnish" productcategory=""/>
+      	<@cat.category datatarget="lunchMeatPoultry" modelnameng="checkboxModel.value7" changeng="7" name="Meat and poultry" productcategory=""/>
+      	<@cat.category datatarget="lunchFish" modelnameng="checkboxModel.value8" changeng="8" name="Fish" productcategory=""/>
+      	<@cat.category datatarget="lunchVegetables" modelnameng="checkboxModel.value9" changeng="9" name="Vegetables" productcategory=""/>
+      	<@cat.category datatarget="lunchFruits" modelnameng="checkboxModel.value10" changeng="10" name="Fruits" productcategory=""/>
+      	<@cat.category datatarget="lunchDrinks" modelnameng="checkboxModel.value11" changeng="11" name="Drinks" productcategory=""/>
 
         </div>
         <@prod.card idcss="lunchGarnish" name="garnish" productid="6"/>
@@ -196,12 +196,12 @@
       	</div>
       	<div class="form-row">
       	
-      	<@cat.category datatarget="dinnerGarnish" modelnameng="checkboxModel.value12" changeng="12" name="Garnish"/>
-      	<@cat.category datatarget="dinnerMeatPoultry" modelnameng="checkboxModel.value13" changeng="13" name="Meat and poultry"/>
-      	<@cat.category datatarget="dinnerFish" modelnameng="checkboxModel.value14" changeng="14" name="Fish"/>
-      	<@cat.category datatarget="dinnerVegetables" modelnameng="checkboxModel.value15" changeng="15" name="Vegetables"/>
-      	<@cat.category datatarget="dinnerFruits" modelnameng="checkboxModel.value16" changeng="16" name="Fruits"/>
-      	<@cat.category datatarget="dinnerDrinks" modelnameng="checkboxModel.value17" changeng="17" name="Drinks"/>
+      	<@cat.category datatarget="dinnerGarnish" modelnameng="checkboxModel.value12" changeng="12" name="Garnish" productcategory=""/>
+      	<@cat.category datatarget="dinnerMeatPoultry" modelnameng="checkboxModel.value13" changeng="13" name="Meat and poultry" productcategory=""/>
+      	<@cat.category datatarget="dinnerFish" modelnameng="checkboxModel.value14" changeng="14" name="Fish" productcategory=""/>
+      	<@cat.category datatarget="dinnerVegetables" modelnameng="checkboxModel.value15" changeng="15" name="Vegetables" productcategory=""/>
+      	<@cat.category datatarget="dinnerFruits" modelnameng="checkboxModel.value16" changeng="16" name="Fruits" productcategory=""/>
+      	<@cat.category datatarget="dinnerDrinks" modelnameng="checkboxModel.value17" changeng="17" name="Drinks" productcategory=""/>
       	
 		</div>
 		<@prod.card idcss="dinnerGarnish" name="garnish" productid="12"/>

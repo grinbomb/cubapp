@@ -48,9 +48,9 @@ $scope.checkboxModel = {
        value2 : 'NO',
        value3 : false
      };
-$scope.change = function(eatType){
-	$http.post('http://localhost:8080/api/calculator',{subject:eatType}).then(function(response){
-		$scope.testeat[eatType] = response.data;
+$scope.change = function(eatid, eatcategory){
+	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory}).then(function(response){
+		$scope.testeat[eatid] = response.data;
      });};
      
 });

@@ -9,6 +9,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/calculator">Calculator</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/createcard">Add new card</a>
+            </li>
         </ul>
     </div>
 </nav>

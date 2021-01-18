@@ -1,4 +1,4 @@
-package domain;
+package com.chukuobody.app.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,20 +9,20 @@ import javax.persistence.Id;
 public class ProductCard {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
-private Integer id;
+private Long id;
 
 private String name;
-private String mealTime;
 private String productCategory;
 private Double caloriesPG;
 private Double proteinsPG;
 private Double fatsPG;
 private Double carbohydratesPG;
+private String fileName;
 
-public Integer getId() {
+public Long getId() {
 	return id;
 }
-public void setId(Integer id) {
+public void setId(Long id) {
 	this.id = id;
 }
 public String getName() {
@@ -30,12 +30,6 @@ public String getName() {
 }
 public void setName(String name) {
 	this.name = name;
-}
-public String getMealTime() {
-	return mealTime;
-}
-public void setMealTime(String mealTime) {
-	this.mealTime = mealTime;
 }
 public String getProductCategory() {
 	return productCategory;
@@ -66,6 +60,12 @@ public Double getCarbohydratesPG() {
 }
 public void setCarbohydratesPG(Double carbohydratesPG) {
 	this.carbohydratesPG = carbohydratesPG;
+}
+public String getFileName() {
+	return fileName;
+}
+public void setFileName(String fileName) {
+	this.fileName = fileName;
 }
 
 }
