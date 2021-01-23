@@ -123,20 +123,38 @@
       	</div>
       	<div class="form-row">
       	
-      	<@cat.category datatarget="breakfastMainDishChoice" modelnameng="checkboxModel.value1" changeng="1" name="Main dish" productcategory=""/>
-      	<@cat.category datatarget="breakfastFruits" modelnameng="checkboxModel.value2" changeng="2" name="Fruits" productcategory="FRUITS"/>
-      	<@cat.category datatarget="breakfastToast" modelnameng="checkboxModel.value3" changeng="3" name="Toast" productcategory=""/>
-      	<@cat.category datatarget="breakfastVegetables" modelnameng="checkboxModel.value4" changeng="4" name="Vegetables" productcategory="VEGETABLES"/>
-      	<@cat.category datatarget="breakfastBerries" modelnameng="checkboxModel.value5" changeng="5" name="Berries" productcategory=""/>
+      	<@cat.category datatarget="breakfastMeatAndPoultry"	modelnameng="checkboxCategory.breakfast1" 	indextoarray="1" 	name="Meat and Poultry" productcategory="MEATANDPOULTRY"/>
+      	<@cat.category datatarget="breakfastFish" 			modelnameng="checkboxCategory.breakfast2" 	indextoarray="2" 	name="Fish" 			productcategory="FISH"/>
+      	<@cat.category datatarget="breakfastSeafood" 		modelnameng="checkboxCategory.breakfast3" 	indextoarray="3" 	name="Seafood" 			productcategory="SEAFOOD"/>
+      	<@cat.category datatarget="breakfastVegetables" 	modelnameng="checkboxCategory.breakfast4" 	indextoarray="4" 	name="Vegetables" 		productcategory="VEGETABLES"/>
+      	<@cat.category datatarget="breakfastFruits" 		modelnameng="checkboxCategory.breakfast5" 	indextoarray="5" 	name="Fruits" 			productcategory="FRUITS"/>
+      	<@cat.category datatarget="breakfastBerries" 		modelnameng="checkboxCategory.breakfast6" 	indextoarray="6" 	name="Berries" 			productcategory="BERRIES"/>
+      	<@cat.category datatarget="breakfastGreens" 		modelnameng="checkboxCategory.breakfast7" 	indextoarray="7" 	name="Greens" 			productcategory="GREENS"/>
+      	<@cat.category datatarget="breakfastMushrooms" 		modelnameng="checkboxCategory.breakfast8" 	indextoarray="8" 	name="Mushrooms" 		productcategory="EGGS"/>
+      	<@cat.category datatarget="breakfastGroats" 		modelnameng="checkboxCategory.breakfast9" 	indextoarray="9" 	name="Groats" 			productcategory="GROATS"/>
+      	<@cat.category datatarget="breakfastEggs"			modelnameng="checkboxCategory.breakfast10" 	indextoarray="10" 	name="Eggs" 			productcategory="EGGS"/>
+      	<@cat.category datatarget="breakfastDairy" 			modelnameng="checkboxCategory.breakfast11" 	indextoarray="11" 	name="Dairy" 			productcategory="DAIRY"/>
+      	<@cat.category datatarget="breakfastFlour" 			modelnameng="checkboxCategory.breakfast12" 	indextoarray="12" 	name="Flour" 			productcategory="FLOUR"/>
+      	<@cat.category datatarget="breakfastDrinks" 		modelnameng="checkboxCategory.breakfast13" 	indextoarray="13" 	name="Drinks" 			productcategory="DRINKS"/>
+      	<@cat.category datatarget="breakfastOther" 			modelnameng="checkboxCategory.breakfast14" 	indextoarray="14" 	name="Other" 			productcategory="OTHER"/>
       	
-
 		</div>
+				
+		<@prod.card idcss="breakfastMeatAndPoultry" name="meat and poultry" indexfromarray="1"/>
+		<@prod.card idcss="breakfastFish" 			name="fish" 			indexfromarray="2"/>
+		<@prod.card idcss="breakfastSeafood" 		name="seafood" 			indexfromarray="3"/>
+		<@prod.card idcss="breakfastVegetables" 	name="vegetables" 		indexfromarray="4"/>
+		<@prod.card idcss="breakfastFruits" 		name="fruits" 			indexfromarray="5"/>
+		<@prod.card idcss="breakfastBerries" 		name="berries" 			indexfromarray="6"/>
+		<@prod.card idcss="breakfastGreens" 		name="greens" 			indexfromarray="7"/>
+		<@prod.card idcss="breakfastMushrooms" 		name="mushrooms" 		indexfromarray="8"/>
+		<@prod.card idcss="breakfastGroats" 		name="groats" 			indexfromarray="9"/>
+		<@prod.card idcss="breakfastEggs" 			name="eggs" 			indexfromarray="10"/>
+		<@prod.card idcss="breakfastDairy" 			name="dairy" 			indexfromarray="11"/>
+		<@prod.card idcss="breakfastFlour" 			name="flour" 			indexfromarray="12"/>
+		<@prod.card idcss="breakfastDrinks" 		name="drinks" 			indexfromarray="13"/>
+		<@prod.card idcss="breakfastOther" 			name="other" 			indexfromarray="14"/>
 		
-		<@prod.card idcss="breakfastMainDishChoice" name="main dish" productid="1"/>
-		<@prod.card idcss="breakfastFruits" name="fruits" productid="2"/>
-		<@prod.card idcss="breakfastToast" name="toast" productid="3"/>
-		<@prod.card idcss="breakfastVegetables" name="vegetables" productid="4"/>
-		<@prod.card idcss="breakfastBerries" name="berries" productid="5"/>
         </div>
         <!-- Menu selections area for BREAKFAST IS OVER-->
     </div>
@@ -159,23 +177,40 @@
       	<h4>Select the categories you would like to compose your lunch menu: </h4>
       	</div>
       	<div class="form-row">
-      	<@cat.category datatarget="lunchGarnish" modelnameng="checkboxModel.value6" changeng="6" name="Garnish" productcategory=""/>
-      	<@cat.category datatarget="lunchMeatPoultry" modelnameng="checkboxModel.value7" changeng="7" name="Meat and poultry" productcategory=""/>
-      	<@cat.category datatarget="lunchFish" modelnameng="checkboxModel.value8" changeng="8" name="Fish" productcategory=""/>
-      	<@cat.category datatarget="lunchVegetables" modelnameng="checkboxModel.value9" changeng="9" name="Vegetables" productcategory=""/>
-      	<@cat.category datatarget="lunchFruits" modelnameng="checkboxModel.value10" changeng="10" name="Fruits" productcategory=""/>
-      	<@cat.category datatarget="lunchDrinks" modelnameng="checkboxModel.value11" changeng="11" name="Drinks" productcategory=""/>
-
+      	<@cat.category datatarget="lunchMeatAndPoultry" modelnameng="checkboxCategory.lunch1" 	indextoarray="15" 	name="Meat and Poultry" productcategory="MEATANDPOULTRY"/>
+      	<@cat.category datatarget="lunchFish" 			modelnameng="checkboxCategory.lunch2" 	indextoarray="16" 	name="Fish" 			productcategory="FISH"/>
+      	<@cat.category datatarget="lunchSeafood" 		modelnameng="checkboxCategory.lunch3" 	indextoarray="17" 	name="Seafood" 			productcategory="SEAFOOD"/>
+      	<@cat.category datatarget="lunchVegetables" 	modelnameng="checkboxCategory.lunch4" 	indextoarray="18" 	name="Vegetables" 		productcategory="VEGETABLES"/>
+      	<@cat.category datatarget="lunchFruits" 		modelnameng="checkboxCategory.lunch5" 	indextoarray="19" 	name="Fruits" 			productcategory="FRUITS"/>
+      	<@cat.category datatarget="lunchBerries" 		modelnameng="checkboxCategory.lunch6" 	indextoarray="20" 	name="Berries" 			productcategory="BERRIES"/>
+      	<@cat.category datatarget="lunchGreens" 		modelnameng="checkboxCategory.lunch7" 	indextoarray="21" 	name="Greens" 			productcategory="GREENS"/>
+      	<@cat.category datatarget="lunchMushrooms" 		modelnameng="checkboxCategory.lunch8" 	indextoarray="22" 	name="Mushrooms" 		productcategory="EGGS"/>
+      	<@cat.category datatarget="lunchGroats" 		modelnameng="checkboxCategory.lunch9" 	indextoarray="23" 	name="Groats" 			productcategory="GROATS"/>
+      	<@cat.category datatarget="lunchEggs"			modelnameng="checkboxCategory.lunch10" 	indextoarray="24" 	name="Eggs" 			productcategory="EGGS"/>
+      	<@cat.category datatarget="lunchDairy" 			modelnameng="checkboxCategory.lunch11" 	indextoarray="25" 	name="Dairy" 			productcategory="DAIRY"/>
+      	<@cat.category datatarget="lunchFlour" 			modelnameng="checkboxCategory.lunch12" 	indextoarray="26" 	name="Flour" 			productcategory="FLOUR"/>
+      	<@cat.category datatarget="lunchDrinks" 		modelnameng="checkboxCategory.lunch13" 	indextoarray="27" 	name="Drinks" 			productcategory="DRINKS"/>
+      	<@cat.category datatarget="lunchOther" 			modelnameng="checkboxCategory.lunch14" 	indextoarray="28" 	name="Other" 			productcategory="OTHER"/>
+      	
+		</div>
+				
+		<@prod.card idcss="lunchMeatAndPoultry" name="meat and poultry" indexfromarray="15"/>
+		<@prod.card idcss="lunchFish" 			name="fish" 			indexfromarray="16"/>
+		<@prod.card idcss="lunchSeafood" 		name="seafood" 			indexfromarray="17"/>
+		<@prod.card idcss="lunchVegetables" 	name="vegetables" 		indexfromarray="18"/>
+		<@prod.card idcss="lunchFruits" 		name="fruits" 			indexfromarray="19"/>
+		<@prod.card idcss="lunchBerries" 		name="berries" 			indexfromarray="20"/>
+		<@prod.card idcss="lunchGreens" 		name="greens" 			indexfromarray="21"/>
+		<@prod.card idcss="lunchMushrooms" 		name="mushrooms" 		indexfromarray="22"/>
+		<@prod.card idcss="lunchGroats" 		name="groats" 			indexfromarray="23"/>
+		<@prod.card idcss="lunchEggs" 			name="eggs" 			indexfromarray="24"/>
+		<@prod.card idcss="lunchDairy" 			name="dairy" 			indexfromarray="25"/>
+		<@prod.card idcss="lunchFlour" 			name="flour" 			indexfromarray="26"/>
+		<@prod.card idcss="lunchDrinks" 		name="drinks" 			indexfromarray="27"/>
+		<@prod.card idcss="lunchOther" 			name="other" 			indexfromarray="28"/>
+		
         </div>
-        <@prod.card idcss="lunchGarnish" name="garnish" productid="6"/>
-		<@prod.card idcss="lunchMeatPoultry" name="meat and poultry" productid="7"/>
-		<@prod.card idcss="lunchFish" name="fish" productid="8"/>
-		<@prod.card idcss="lunchVegetables" name="vegetables" productid="9"/>
-		<@prod.card idcss="lunchFruits" name="fruits" productid="10"/>
-		<@prod.card idcss="lunchDrinks" name="drinks" productid="11"/>
-        
-        <!-- Menu selections area for LUNCH IS OVER-->
-    </div>
+    <!-- Menu selections area for LUNCH IS OVER-->
   </div>
   <!-- Pop-up area for LUNCH menu IS OVER-->
   
@@ -196,20 +231,38 @@
       	</div>
       	<div class="form-row">
       	
-      	<@cat.category datatarget="dinnerGarnish" modelnameng="checkboxModel.value12" changeng="12" name="Garnish" productcategory=""/>
-      	<@cat.category datatarget="dinnerMeatPoultry" modelnameng="checkboxModel.value13" changeng="13" name="Meat and poultry" productcategory=""/>
-      	<@cat.category datatarget="dinnerFish" modelnameng="checkboxModel.value14" changeng="14" name="Fish" productcategory=""/>
-      	<@cat.category datatarget="dinnerVegetables" modelnameng="checkboxModel.value15" changeng="15" name="Vegetables" productcategory=""/>
-      	<@cat.category datatarget="dinnerFruits" modelnameng="checkboxModel.value16" changeng="16" name="Fruits" productcategory=""/>
-      	<@cat.category datatarget="dinnerDrinks" modelnameng="checkboxModel.value17" changeng="17" name="Drinks" productcategory=""/>
+		<@cat.category datatarget="dinnerMeatAndPoultry"	modelnameng="checkboxCategory.dinner1" 		indextoarray="29" 	name="Meat and Poultry" productcategory="MEATANDPOULTRY"/>
+      	<@cat.category datatarget="dinnerFish" 				modelnameng="checkboxCategory.dinner2" 		indextoarray="30" 	name="Fish" 			productcategory="FISH"/>
+      	<@cat.category datatarget="dinnerSeafood" 			modelnameng="checkboxCategory.dinner3" 		indextoarray="31" 	name="Seafood" 			productcategory="SEAFOOD"/>
+      	<@cat.category datatarget="dinnerVegetables" 		modelnameng="checkboxCategory.dinner4" 		indextoarray="32" 	name="Vegetables" 		productcategory="VEGETABLES"/>
+      	<@cat.category datatarget="dinnerFruits" 			modelnameng="checkboxCategory.dinner5" 		indextoarray="33" 	name="Fruits" 			productcategory="FRUITS"/>
+      	<@cat.category datatarget="dinnerBerries" 			modelnameng="checkboxCategory.dinner6" 		indextoarray="34" 	name="Berries" 			productcategory="BERRIES"/>
+      	<@cat.category datatarget="dinnerGreens" 			modelnameng="checkboxCategory.dinner7" 		indextoarray="35" 	name="Greens" 			productcategory="GREENS"/>
+      	<@cat.category datatarget="dinnerMushrooms" 		modelnameng="checkboxCategory.dinner8" 		indextoarray="36" 	name="Mushrooms" 		productcategory="EGGS"/>
+      	<@cat.category datatarget="dinnerGroats" 			modelnameng="checkboxCategory.dinner9" 		indextoarray="37" 	name="Groats" 			productcategory="GROATS"/>
+      	<@cat.category datatarget="dinnerEggs"				modelnameng="checkboxCategory.dinner10" 	indextoarray="38" 	name="Eggs" 			productcategory="EGGS"/>
+      	<@cat.category datatarget="dinnerDairy" 			modelnameng="checkboxCategory.dinner11" 	indextoarray="39" 	name="Dairy" 			productcategory="DAIRY"/>
+      	<@cat.category datatarget="dinnerFlour" 			modelnameng="checkboxCategory.dinner12" 	indextoarray="40" 	name="Flour" 			productcategory="FLOUR"/>
+      	<@cat.category datatarget="dinnerDrinks" 			modelnameng="checkboxCategory.dinner13" 	indextoarray="41" 	name="Drinks" 			productcategory="DRINKS"/>
+      	<@cat.category datatarget="dinnerOther" 			modelnameng="checkboxCategory.dinner14" 	indextoarray="42" 	name="Other" 			productcategory="OTHER"/>
       	
 		</div>
-		<@prod.card idcss="dinnerGarnish" name="garnish" productid="12"/>
-		<@prod.card idcss="dinnerMeatPoultry" name="meat and poultry" productid="13"/>
-		<@prod.card idcss="dinnerFish" name="fish" productid="14"/>
-		<@prod.card idcss="dinnerVegetables" name="vegetables" productid="15"/>
-		<@prod.card idcss="dinnerFruits" name="fruits" productid="16"/>
-		<@prod.card idcss="dinnerDrinks" name="drinks" productid="17"/>
+				
+		<@prod.card idcss="dinnerMeatAndPoultry"	name="meat and poultry" indexfromarray="29"/>
+		<@prod.card idcss="dinnerFish" 				name="fish" 			indexfromarray="30"/>
+		<@prod.card idcss="dinnerSeafood" 			name="seafood" 			indexfromarray="31"/>
+		<@prod.card idcss="dinnerVegetables" 		name="vegetables" 		indexfromarray="32"/>
+		<@prod.card idcss="dinnerFruits" 			name="fruits" 			indexfromarray="33"/>
+		<@prod.card idcss="dinnerBerries" 			name="berries" 			indexfromarray="34"/>
+		<@prod.card idcss="dinnerGreens" 			name="greens" 			indexfromarray="35"/>
+		<@prod.card idcss="dinnerMushrooms" 		name="mushrooms" 		indexfromarray="36"/>
+		<@prod.card idcss="dinnerGroats" 			name="groats" 			indexfromarray="37"/>
+		<@prod.card idcss="dinnerEggs" 				name="eggs" 			indexfromarray="38"/>
+		<@prod.card idcss="dinnerDairy" 			name="dairy" 			indexfromarray="39"/>
+		<@prod.card idcss="dinnerFlour" 			name="flour" 			indexfromarray="40"/>
+		<@prod.card idcss="dinnerDrinks" 			name="drinks" 			indexfromarray="41"/>
+		<@prod.card idcss="dinnerOther" 			name="other" 			indexfromarray="42"/>
+		
         </div>
        <!-- Menu selections area for DINNER IS OVER-->
     </div>

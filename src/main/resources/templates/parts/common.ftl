@@ -27,27 +27,32 @@
 <#nested>
 </div>
 <!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS, then AngularJS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
 <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
-<!--<script src="/src/main/resources/scripts/app.js"></script> -->
 
 <script>
+var myApp = angular.module('AppNewCard',[]);
+myApp.controller('ControllerNewCard', function ($scope, $http) {
+	$scope.product={
+			name:"Name",
+			calories:0.001,
+			proteins:0.001,
+			fats:0.001,
+			carbohydrates:0.001,
+			img:"https://i.ibb.co/y4nY6zh/1.png",
+			gram:1
+	};
+});
+
 var myApp = angular.module('AppMenu',[]);
 myApp.controller('AppController', function ($scope, $http) {
 
 $scope.testeat = [];
 
-
-
-$scope.checkboxModel = {
-       value1 : false,
-       value2 : 'NO',
-       value3 : false
-     };
 $scope.change = function(eatid, eatcategory){
 	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory}).then(function(response){
 		$scope.testeat[eatid] = response.data;
