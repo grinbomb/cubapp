@@ -130,7 +130,7 @@
       	<@cat.category datatarget="breakfastFruits" 		modelnameng="checkboxCategory.breakfast5" 	indextoarray="5" 	name="Fruits" 			productcategory="FRUITS"/>
       	<@cat.category datatarget="breakfastBerries" 		modelnameng="checkboxCategory.breakfast6" 	indextoarray="6" 	name="Berries" 			productcategory="BERRIES"/>
       	<@cat.category datatarget="breakfastGreens" 		modelnameng="checkboxCategory.breakfast7" 	indextoarray="7" 	name="Greens" 			productcategory="GREENS"/>
-      	<@cat.category datatarget="breakfastMushrooms" 		modelnameng="checkboxCategory.breakfast8" 	indextoarray="8" 	name="Mushrooms" 		productcategory="EGGS"/>
+      	<@cat.category datatarget="breakfastMushrooms" 		modelnameng="checkboxCategory.breakfast8" 	indextoarray="8" 	name="Mushrooms" 		productcategory="MUSHROOMS"/>
       	<@cat.category datatarget="breakfastGroats" 		modelnameng="checkboxCategory.breakfast9" 	indextoarray="9" 	name="Groats" 			productcategory="GROATS"/>
       	<@cat.category datatarget="breakfastEggs"			modelnameng="checkboxCategory.breakfast10" 	indextoarray="10" 	name="Eggs" 			productcategory="EGGS"/>
       	<@cat.category datatarget="breakfastDairy" 			modelnameng="checkboxCategory.breakfast11" 	indextoarray="11" 	name="Dairy" 			productcategory="DAIRY"/>
@@ -184,7 +184,7 @@
       	<@cat.category datatarget="lunchFruits" 		modelnameng="checkboxCategory.lunch5" 	indextoarray="19" 	name="Fruits" 			productcategory="FRUITS"/>
       	<@cat.category datatarget="lunchBerries" 		modelnameng="checkboxCategory.lunch6" 	indextoarray="20" 	name="Berries" 			productcategory="BERRIES"/>
       	<@cat.category datatarget="lunchGreens" 		modelnameng="checkboxCategory.lunch7" 	indextoarray="21" 	name="Greens" 			productcategory="GREENS"/>
-      	<@cat.category datatarget="lunchMushrooms" 		modelnameng="checkboxCategory.lunch8" 	indextoarray="22" 	name="Mushrooms" 		productcategory="EGGS"/>
+      	<@cat.category datatarget="lunchMushrooms" 		modelnameng="checkboxCategory.lunch8" 	indextoarray="22" 	name="Mushrooms" 		productcategory="MUSHROOMS"/>
       	<@cat.category datatarget="lunchGroats" 		modelnameng="checkboxCategory.lunch9" 	indextoarray="23" 	name="Groats" 			productcategory="GROATS"/>
       	<@cat.category datatarget="lunchEggs"			modelnameng="checkboxCategory.lunch10" 	indextoarray="24" 	name="Eggs" 			productcategory="EGGS"/>
       	<@cat.category datatarget="lunchDairy" 			modelnameng="checkboxCategory.lunch11" 	indextoarray="25" 	name="Dairy" 			productcategory="DAIRY"/>
@@ -238,7 +238,7 @@
       	<@cat.category datatarget="dinnerFruits" 			modelnameng="checkboxCategory.dinner5" 		indextoarray="33" 	name="Fruits" 			productcategory="FRUITS"/>
       	<@cat.category datatarget="dinnerBerries" 			modelnameng="checkboxCategory.dinner6" 		indextoarray="34" 	name="Berries" 			productcategory="BERRIES"/>
       	<@cat.category datatarget="dinnerGreens" 			modelnameng="checkboxCategory.dinner7" 		indextoarray="35" 	name="Greens" 			productcategory="GREENS"/>
-      	<@cat.category datatarget="dinnerMushrooms" 		modelnameng="checkboxCategory.dinner8" 		indextoarray="36" 	name="Mushrooms" 		productcategory="EGGS"/>
+      	<@cat.category datatarget="dinnerMushrooms" 		modelnameng="checkboxCategory.dinner8" 		indextoarray="36" 	name="Mushrooms" 		productcategory="MUSHROOMS"/>
       	<@cat.category datatarget="dinnerGroats" 			modelnameng="checkboxCategory.dinner9" 		indextoarray="37" 	name="Groats" 			productcategory="GROATS"/>
       	<@cat.category datatarget="dinnerEggs"				modelnameng="checkboxCategory.dinner10" 	indextoarray="38" 	name="Eggs" 			productcategory="EGGS"/>
       	<@cat.category datatarget="dinnerDairy" 			modelnameng="checkboxCategory.dinner11" 	indextoarray="39" 	name="Dairy" 			productcategory="DAIRY"/>

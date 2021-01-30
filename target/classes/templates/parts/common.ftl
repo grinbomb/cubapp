@@ -36,7 +36,7 @@
 
 <script>
 var myApp = angular.module('AppNewCard',[]);
-myApp.controller('ControllerNewCard', function ($scope, $http) {
+myApp.controller('ControllerNewCard', function ($scope, $http) {	
 	$scope.product={
 			name:"Name",
 			calories:0.001,
@@ -46,17 +46,42 @@ myApp.controller('ControllerNewCard', function ($scope, $http) {
 			img:"https://i.ibb.co/y4nY6zh/1.png",
 			gram:1
 	};
+	
+	$scope.gram = 1;
+	
+	$scope.recountTestCard = function(recgr){
+		
+		if (recgr > 9999999) {
+			$scope.gram = 9999999;
+		}else if(recgr < 1) {
+			$scope.gram = 1;
+		}else{
+			$scope.gram = recgr;
+		}
+    	};
 });
 
 var myApp = angular.module('AppMenu',[]);
 myApp.controller('AppController', function ($scope, $http) {
 
-$scope.testeat = [];
+$scope.cards = [];
+$scope.recgram = [];
 
 $scope.change = function(eatid, eatcategory){
 	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory}).then(function(response){
-		$scope.testeat[eatid] = response.data;
+		$scope.cards[eatid] = response.data;
      });};
+     
+$scope.recount = function(recid, recgr){
+	$scope.recgram[recid]=1;
+		if (recgr > 9999999) {
+			$scope.recgram[recid] = 9999999;
+		}else if(recgr < 1) {
+			$scope.recgram[recid] = 1;
+		}else{
+		$scope.recgram[recid] = recgr;
+		}
+    	};
      
 });
 </script>

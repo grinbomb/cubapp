@@ -1,9 +1,9 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
-<div ng-app="AppNewCard" ng-controller="ControllerNewCard">
+
 	<form method="post" enctype="multipart/form-data">
-	
+	<div ng-app="AppNewCard" ng-controller="ControllerNewCard">
 	<div class="form-row">
     	<div class="form-group col-md-6">
       		<label for="inputProductName">Product name</label>
@@ -15,8 +15,26 @@
 			</#if>
     	</div>
     	<div class="form-group col-md-6">
-      		<label for="inputProductCategory">Product category</label>
-      <input type="text" name = "productCategory" autocomplete="off" class="form-control ${(errorProductCategory??)?string('is-invalid', '')}" id="inputProductCategory" ng-model="product.category">
+    	
+    		<label for="inputProductCategory">Product category</label>
+	    	<select class="form-control ${(errorProductCategory??)?string('is-invalid', '')}" name="productCategory" id="inputProductCategory" ng-model="product.category">
+		    	<option hidden=""></option>
+		      	<option>MEATANDPOULTRY</option>
+		      	<option>FISH</option>
+		      	<option>SEAFOOD</option>
+		      	<option>VEGETABLES</option>
+		      	<option>FRUITS</option>
+		      	<option>BERRIES</option>
+		      	<option>GREENS</option>
+		      	<option>MUSHROOMS</option>
+		      	<option>GROATS</option>
+		      	<option>EGGS</option>
+		      	<option>DAIRY</option>
+		      	<option>FLOUR</option>
+		      	<option>DRINKS</option>
+		      	<option>OTHER</option>
+		    </select>
+    		
       	<#if errorProductCategory??>
 	   		<div class="alert alert-danger text-center" role="alert">
  				 ${errorProductCategory}
@@ -64,7 +82,7 @@
   </div> 
     <div class="form-row">
     	<div class="form-group col-md-12">
-			<label for="inputImgLink">Image link</label>
+			<label for="inputImgLink">Image link <small>(beforehand you should upload your image to the image hosting, for example "<a href="https://imgbb.com">https://imgbb.com</a>")</small></label>
       		<input type="text" name = "imgLink" autocomplete="off" class="form-control ${(errorImgLink??)?string('is-invalid', '')}" id="inputImgLink" ng-model="product.img">
       		<#if errorImgLink??>
 	   			<div class="alert alert-danger text-center" role="alert">
@@ -73,9 +91,7 @@
 			</#if>
 		</div>
   	</div>
-  		<button type="submit" class="btn btn-primary">Create</button>
-	</form>
-	
+  	<div class="row d-flex justify-content-center align-items-center m-2" style="background-color:#DCECFC;">
 		<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
   		<img class="card-img-top" src={{product.img}} alt="EXAMPLE IMG" style="background-color: white;">
   			<div class="card-body" style="background-color: white;">
@@ -83,19 +99,19 @@
     			<div class="card-text" style="font-size:16px;">
 					<table style="min-width:100%;">
 						<tr>
-					    	<td class="text-left">Calories</td><td class="text-right">{{(product.calories*product.gram).toFixed(3);}}</td>
+					    	<td class="text-left">Calories</td><td class="text-right">{{(product.calories*gram).toFixed(3);}}</td>
 					   	</tr>
 					   	<tr>
-					    	<td class="text-left">Proteins</td><td class="text-right">{{(product.proteins*product.gram).toFixed(3);}}</td>
+					    	<td class="text-left">Proteins</td><td class="text-right">{{(product.proteins*gram).toFixed(3);}}</td>
 					   	</tr>
 					   	<tr>
-					    	<td class="text-left">Fats</td><td class="text-right">{{(product.fats*product.gram).toFixed(3);}}</td>
+					    	<td class="text-left">Fats</td><td class="text-right">{{(product.fats*gram).toFixed(3);}}</td>
 					   	</tr>
 					   	<tr>
-					    	<td class="text-left">Carbohydrates</td><td class="text-right">{{(product.carbohydrates*product.gram).toFixed(3);}}</td>
+					    	<td class="text-left">Carbohydrates</td><td class="text-right">{{(product.carbohydrates*gram).toFixed(3);}}</td>
 					   	</tr>
 					   	<tr>
-					   		<td>Gram</td><td><input type="number" style="width:100%;" ng-model="product.gram"></td>
+					   		<td>Grams</td><td><input type="number" style="width:100%; text-align: right;" ng-model="gram" ng-change="recountTestCard(gram)"></td>
 					   	</tr>
 					</table>
 				</div>
@@ -108,6 +124,10 @@
 				</div>
   			</div>
 		</div>
+	</div>
+  	</div>
+  		<button type="submit" class="btn btn-primary">Create</button>
+  		
+	</form>
 	
-</div>
 </@c.page>

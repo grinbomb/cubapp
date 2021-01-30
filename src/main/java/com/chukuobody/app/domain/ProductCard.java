@@ -19,6 +19,21 @@ private Double fatsPG;
 private Double carbohydratesPG;
 private String fileName;
 
+public ProductCard() {
+	
+}
+
+public ProductCard(String name, String productCategory, Double caloriesPG, Double proteinsPG, Double fatsPG,
+		Double carbohydratesPG, String fileName) {
+	this.name = name;
+	this.productCategory = productCategory;
+	this.caloriesPG = caloriesPG;
+	this.proteinsPG = proteinsPG;
+	this.fatsPG = fatsPG;
+	this.carbohydratesPG = carbohydratesPG;
+	this.fileName = fileName;
+}
+
 public Long getId() {
 	return id;
 }
