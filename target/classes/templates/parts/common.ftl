@@ -36,9 +36,9 @@
 
 <script>
 var myApp = angular.module('AppNewCard',[]);
-myApp.controller('ControllerNewCard', function ($scope, $http) {	
-	$scope.product={
-			name:"Name",
+myApp.controller('ControllerNewCard', function ($scope, $http) {
+	 $scope.product={
+			name:"Product name",
 			calories:0.001,
 			proteins:0.001,
 			fats:0.001,
@@ -46,7 +46,8 @@ myApp.controller('ControllerNewCard', function ($scope, $http) {
 			img:"https://i.ibb.co/y4nY6zh/1.png",
 			gram:1
 	};
-	
+
+		
 	$scope.gram = 1;
 	
 	$scope.recountTestCard = function(recgr){

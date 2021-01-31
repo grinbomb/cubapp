@@ -38,13 +38,6 @@ public class CreateCardController {
 			Model model) throws IOException 
 	{
 		Map<String, String> errorList = new HashMap<String, String>();
-		model.addAttribute("productName", productName);
-		model.addAttribute("productCategory", productCategory);
-		model.addAttribute("calories", calories);
-		model.addAttribute("proteins", proteins);
-		model.addAttribute("fats", fats);
-		model.addAttribute("carbohydrates", carbohydrates);
-		model.addAttribute("imgLink", imgLink);
 		
 		if(productName.isEmpty())errorList.put("errorProductName", "Product name must not be empty.");
 		if(productCategory.isEmpty())errorList.put("errorProductCategory", "Product category must not be empty.");

@@ -8,7 +8,7 @@
 <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputWeight">Your weight <small>(in kilograms)</small></label>
-      <input type="number" name = "weight" autocomplete="off" class="form-control ${(errorValueWeight??)?string('is-invalid', '')}" id="inputWeight">
+      <input type="number" name = "weight" value="<#if weight??>${weight}</#if>" autocomplete="off" class="form-control ${(errorValueWeight??)?string('is-invalid', '')}" id="inputWeight">
       	<#if errorValueWeight??>
 	   		<div class="alert alert-danger text-center" role="alert">
  				 ${errorValueWeight}
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group col-md-4">
       <label for="inputHeight">Your height <small>(in centimeters)</small></label>
-      <input type="number" name = "height" autocomplete="off" class="form-control ${(errorValueHeight??)?string('is-invalid', '')}" id="inputHeight">
+      <input type="number" name = "height" value="<#if height??>${height}</#if>" autocomplete="off" class="form-control ${(errorValueHeight??)?string('is-invalid', '')}" id="inputHeight">
       	<#if errorValueHeight??>
 	   		<div class="alert alert-danger text-center" role="alert">
  				 ${errorValueHeight}
@@ -26,7 +26,7 @@
 	</div>
 	<div class="form-group col-md-4">
       <label for="inputAge">Your age <small>(in years)</small></label>
-      <input type="number" name = "age" autocomplete="off" class="form-control ${(errorValueAge??)?string('is-invalid', '')}" id="inputAge">
+      <input type="number" name = "age" value="<#if age??>${age}</#if>" autocomplete="off" class="form-control ${(errorValueAge??)?string('is-invalid', '')}" id="inputAge">
       	<#if errorValueAge??>
 	   		<div class="alert alert-danger text-center" role="alert">
  				 ${errorValueAge}
@@ -45,7 +45,7 @@
     			<input type="radio" name="sex" id="male" value="male"> <strong>Male</strong>
   			</label>
   			<label class="btn btn-outline-danger" style="min-width: 50%;">
-    			<input type="radio" name="sex" id="female" value="female"> <strong>Female</strong>
+    			<input type="radio" name="sex" id="female" value="female" > <strong>Female</strong>
   			</label>
 		</div>
 		<#if errorValueGender??>

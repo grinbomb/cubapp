@@ -34,6 +34,9 @@ public class MainController {
 	{
 		
 		Map<String, String> errorList = new HashMap<String, String>();
+		model.addAttribute("weight", weight);
+		model.addAttribute("height", height);
+		model.addAttribute("age", age);
 		
 		if(weight.isEmpty())errorList.put("errorValueWeight", "Weight must not be empty.");
 		if(height.isEmpty())errorList.put("errorValueHeight", "Height must not be empty.");

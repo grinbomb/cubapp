@@ -91,6 +91,8 @@
 			</#if>
 		</div>
   	</div>
+  	<button type="submit" class="btn btn-primary">Create</button>
+  	
   	<div class="row d-flex justify-content-center align-items-center m-2" style="background-color:#DCECFC;">
 		<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
   		<img class="card-img-top" src={{product.img}} alt="EXAMPLE IMG" style="background-color: white;">
@@ -126,7 +128,6 @@
 		</div>
 	</div>
   	</div>
-  		<button type="submit" class="btn btn-primary">Create</button>
   		
 	</form>
 	
