@@ -119,7 +119,25 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne"> <!-- NG-CONTROLLER STARTS HERE -->
       	<div class="card-body">
       	<div style="margin-bottom: 1%;">
-      	<h4>Select the categories you would like to compose your breakfast menu: </h4>
+      	<table class="table table-striped mt-1">
+  			<thead>
+    			<tr>
+			      <th scope="col">Proteins</th>
+			      <th scope="col">Fats</th>
+			      <th scope="col">Carbohydrates</th>
+			      <th scope="col">Calories</th>
+ 			   </tr>
+		 	</thead>
+  			<tbody>
+			    <tr>
+			      <td class="table-warning">${proteins} gm.</td>
+			      <td class="table-warning">${fats} gm.</td>
+			      <td class="table-warning">${carbohydrates} gm.</td>
+			      <td class="table-warning" ng-init="meals.breakfast=${calories}*0.37">{{(meals.breakfast-sumCalories.breakfast).toFixed(0);}} gm.</td>
+			    </tr>
+			 </tbody>
+		</table>
+      	<h4>Select the categories you would like to compose your breakfast menu:</h4>
       	</div>
       	<div class="form-row">
       	
@@ -140,20 +158,20 @@
       	
 		</div>
 				
-		<@prod.card idcss="breakfastMeatAndPoultry" name="meat and poultry" indexfromarray="1"/>
-		<@prod.card idcss="breakfastFish" 			name="fish" 			indexfromarray="2"/>
-		<@prod.card idcss="breakfastSeafood" 		name="seafood" 			indexfromarray="3"/>
-		<@prod.card idcss="breakfastVegetables" 	name="vegetables" 		indexfromarray="4"/>
-		<@prod.card idcss="breakfastFruits" 		name="fruits" 			indexfromarray="5"/>
-		<@prod.card idcss="breakfastBerries" 		name="berries" 			indexfromarray="6"/>
-		<@prod.card idcss="breakfastGreens" 		name="greens" 			indexfromarray="7"/>
-		<@prod.card idcss="breakfastMushrooms" 		name="mushrooms" 		indexfromarray="8"/>
-		<@prod.card idcss="breakfastGroats" 		name="groats" 			indexfromarray="9"/>
-		<@prod.card idcss="breakfastEggs" 			name="eggs" 			indexfromarray="10"/>
-		<@prod.card idcss="breakfastDairy" 			name="dairy" 			indexfromarray="11"/>
-		<@prod.card idcss="breakfastFlour" 			name="flour" 			indexfromarray="12"/>
-		<@prod.card idcss="breakfastDrinks" 		name="drinks" 			indexfromarray="13"/>
-		<@prod.card idcss="breakfastOther" 			name="other" 			indexfromarray="14"/>
+		<@prod.card idcss="breakfastMeatAndPoultry" name="meat and poultry" indexfromarray="1"	meal="breakfast"/>
+		<@prod.card idcss="breakfastFish" 			name="fish" 			indexfromarray="2"	meal="breakfast"/>
+		<@prod.card idcss="breakfastSeafood" 		name="seafood" 			indexfromarray="3"	meal="breakfast"/>
+		<@prod.card idcss="breakfastVegetables" 	name="vegetables" 		indexfromarray="4"	meal="breakfast"/>
+		<@prod.card idcss="breakfastFruits" 		name="fruits" 			indexfromarray="5"	meal="breakfast"/>
+		<@prod.card idcss="breakfastBerries" 		name="berries" 			indexfromarray="6"	meal="breakfast"/>
+		<@prod.card idcss="breakfastGreens" 		name="greens" 			indexfromarray="7"	meal="breakfast"/>
+		<@prod.card idcss="breakfastMushrooms" 		name="mushrooms" 		indexfromarray="8"	meal="breakfast"/>
+		<@prod.card idcss="breakfastGroats" 		name="groats" 			indexfromarray="9"	meal="breakfast"/>
+		<@prod.card idcss="breakfastEggs" 			name="eggs" 			indexfromarray="10"	meal="breakfast"/>
+		<@prod.card idcss="breakfastDairy" 			name="dairy" 			indexfromarray="11"	meal="breakfast"/>
+		<@prod.card idcss="breakfastFlour" 			name="flour" 			indexfromarray="12"	meal="breakfast"/>
+		<@prod.card idcss="breakfastDrinks" 		name="drinks" 			indexfromarray="13"	meal="breakfast"/>
+		<@prod.card idcss="breakfastOther" 			name="other" 			indexfromarray="14"	meal="breakfast"/>
 		
         </div>
         <!-- Menu selections area for BREAKFAST IS OVER-->
@@ -194,20 +212,20 @@
       	
 		</div>
 				
-		<@prod.card idcss="lunchMeatAndPoultry" name="meat and poultry" indexfromarray="15"/>
-		<@prod.card idcss="lunchFish" 			name="fish" 			indexfromarray="16"/>
-		<@prod.card idcss="lunchSeafood" 		name="seafood" 			indexfromarray="17"/>
-		<@prod.card idcss="lunchVegetables" 	name="vegetables" 		indexfromarray="18"/>
-		<@prod.card idcss="lunchFruits" 		name="fruits" 			indexfromarray="19"/>
-		<@prod.card idcss="lunchBerries" 		name="berries" 			indexfromarray="20"/>
-		<@prod.card idcss="lunchGreens" 		name="greens" 			indexfromarray="21"/>
-		<@prod.card idcss="lunchMushrooms" 		name="mushrooms" 		indexfromarray="22"/>
-		<@prod.card idcss="lunchGroats" 		name="groats" 			indexfromarray="23"/>
-		<@prod.card idcss="lunchEggs" 			name="eggs" 			indexfromarray="24"/>
-		<@prod.card idcss="lunchDairy" 			name="dairy" 			indexfromarray="25"/>
-		<@prod.card idcss="lunchFlour" 			name="flour" 			indexfromarray="26"/>
-		<@prod.card idcss="lunchDrinks" 		name="drinks" 			indexfromarray="27"/>
-		<@prod.card idcss="lunchOther" 			name="other" 			indexfromarray="28"/>
+		<@prod.card idcss="lunchMeatAndPoultry" name="meat and poultry" indexfromarray="15"	meal="lunch"/>
+		<@prod.card idcss="lunchFish" 			name="fish" 			indexfromarray="16"	meal="lunch"/>
+		<@prod.card idcss="lunchSeafood" 		name="seafood" 			indexfromarray="17"	meal="lunch"/>
+		<@prod.card idcss="lunchVegetables" 	name="vegetables" 		indexfromarray="18"	meal="lunch"/>
+		<@prod.card idcss="lunchFruits" 		name="fruits" 			indexfromarray="19"	meal="lunch"/>
+		<@prod.card idcss="lunchBerries" 		name="berries" 			indexfromarray="20"	meal="lunch"/>
+		<@prod.card idcss="lunchGreens" 		name="greens" 			indexfromarray="21"	meal="lunch"/>
+		<@prod.card idcss="lunchMushrooms" 		name="mushrooms" 		indexfromarray="22"	meal="lunch"/>
+		<@prod.card idcss="lunchGroats" 		name="groats" 			indexfromarray="23"	meal="lunch"/>
+		<@prod.card idcss="lunchEggs" 			name="eggs" 			indexfromarray="24"	meal="lunch"/>
+		<@prod.card idcss="lunchDairy" 			name="dairy" 			indexfromarray="25"	meal="lunch"/>
+		<@prod.card idcss="lunchFlour" 			name="flour" 			indexfromarray="26"	meal="lunch"/>
+		<@prod.card idcss="lunchDrinks" 		name="drinks" 			indexfromarray="27"	meal="lunch"/>
+		<@prod.card idcss="lunchOther" 			name="other" 			indexfromarray="28"	meal="lunch"/>
 		
         </div>
     <!-- Menu selections area for LUNCH IS OVER-->
@@ -248,20 +266,20 @@
       	
 		</div>
 				
-		<@prod.card idcss="dinnerMeatAndPoultry"	name="meat and poultry" indexfromarray="29"/>
-		<@prod.card idcss="dinnerFish" 				name="fish" 			indexfromarray="30"/>
-		<@prod.card idcss="dinnerSeafood" 			name="seafood" 			indexfromarray="31"/>
-		<@prod.card idcss="dinnerVegetables" 		name="vegetables" 		indexfromarray="32"/>
-		<@prod.card idcss="dinnerFruits" 			name="fruits" 			indexfromarray="33"/>
-		<@prod.card idcss="dinnerBerries" 			name="berries" 			indexfromarray="34"/>
-		<@prod.card idcss="dinnerGreens" 			name="greens" 			indexfromarray="35"/>
-		<@prod.card idcss="dinnerMushrooms" 		name="mushrooms" 		indexfromarray="36"/>
-		<@prod.card idcss="dinnerGroats" 			name="groats" 			indexfromarray="37"/>
-		<@prod.card idcss="dinnerEggs" 				name="eggs" 			indexfromarray="38"/>
-		<@prod.card idcss="dinnerDairy" 			name="dairy" 			indexfromarray="39"/>
-		<@prod.card idcss="dinnerFlour" 			name="flour" 			indexfromarray="40"/>
-		<@prod.card idcss="dinnerDrinks" 			name="drinks" 			indexfromarray="41"/>
-		<@prod.card idcss="dinnerOther" 			name="other" 			indexfromarray="42"/>
+		<@prod.card idcss="dinnerMeatAndPoultry"	name="meat and poultry" indexfromarray="29"	meal="dinner"/>
+		<@prod.card idcss="dinnerFish" 				name="fish" 			indexfromarray="30"	meal="dinner"/>
+		<@prod.card idcss="dinnerSeafood" 			name="seafood" 			indexfromarray="31"	meal="dinner"/>
+		<@prod.card idcss="dinnerVegetables" 		name="vegetables" 		indexfromarray="32"	meal="dinner"/>
+		<@prod.card idcss="dinnerFruits" 			name="fruits" 			indexfromarray="33"	meal="dinner"/>
+		<@prod.card idcss="dinnerBerries" 			name="berries" 			indexfromarray="34"	meal="dinner"/>
+		<@prod.card idcss="dinnerGreens" 			name="greens" 			indexfromarray="35"	meal="dinner"/>
+		<@prod.card idcss="dinnerMushrooms" 		name="mushrooms" 		indexfromarray="36"	meal="dinner"/>
+		<@prod.card idcss="dinnerGroats" 			name="groats" 			indexfromarray="37"	meal="dinner"/>
+		<@prod.card idcss="dinnerEggs" 				name="eggs" 			indexfromarray="38"	meal="dinner"/>
+		<@prod.card idcss="dinnerDairy" 			name="dairy" 			indexfromarray="39"	meal="dinner"/>
+		<@prod.card idcss="dinnerFlour" 			name="flour" 			indexfromarray="40"	meal="dinner"/>
+		<@prod.card idcss="dinnerDrinks" 			name="drinks" 			indexfromarray="41"	meal="dinner"/>
+		<@prod.card idcss="dinnerOther" 			name="other" 			indexfromarray="42"	meal="dinner"/>
 		
         </div>
        <!-- Menu selections area for DINNER IS OVER-->

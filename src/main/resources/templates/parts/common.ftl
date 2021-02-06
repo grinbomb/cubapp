@@ -65,8 +65,17 @@ myApp.controller('ControllerNewCard', function ($scope, $http) {
 var myApp = angular.module('AppMenu',[]);
 myApp.controller('AppController', function ($scope, $http) {
 
+$scope.meals = {
+		breakfast:0,
+		afterbreakfast:0,
+		lunch:0,
+		afterlunch:0,
+		dinner:0
+};
+
 $scope.cards = [];
 $scope.recgram = [];
+$scope.checkboxes = [];
 
 $scope.change = function(eatid, eatcategory){
 	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory}).then(function(response){
@@ -83,7 +92,65 @@ $scope.recount = function(recid, recgr){
 		$scope.recgram[recid] = recgr;
 		}
     	};
-     
+
+    	var breakfastSubtrahend = [];
+    	//var breakfastSubtrahend = [];
+    	var lunchSubtrahend = [];
+    	//var breakfastSubtrahend = [];
+    	var dinnerSubtrahend = [];
+    	$scope.sumCalories={
+    			breakfast:0,
+    			lunch:0,
+    			dinner:0
+    	};
+    	var breakfastSubtrahendSum = 0, lunchSubtrahendSum=0, dinnerSubtrahendSum=0;
+
+$scope.calculateEat = function(caloriesPerGr, caloriesThisProduct, mealtime, idcheck){
+
+	breakfastSubtrahend[idcheck]=0;
+
+	if(mealtime == "breakfast"){
+		if ($scope.checkboxes[idcheck]){
+			breakfastSubtrahend[idcheck]=caloriesPerGr*caloriesThisProduct;
+		}else{
+			breakfastSubtrahend[idcheck]=0;
+		}
+		breakfastSubtrahendSum=0;
+		
+		breakfastSubtrahend.forEach(arg => {
+			breakfastSubtrahendSum += arg;
+		 });
+		
+		$scope.sumCalories.breakfast = breakfastSubtrahendSum;
+	}else if(mealtime == "lunch"){
+		if ($scope.checkboxes[idcheck]){
+			lunchSubtrahend[idcheck]=caloriesPerGr*caloriesThisProduct;
+		}else{
+			lunchSubtrahend[idcheck]=0;
+		}
+		lunchSubtrahendSum=0;
+		
+		lunchSubtrahendSum.forEach(arg => {
+			lunchSubtrahendSum += arg;
+		 });
+		
+		$scope.sumCalories.lunch = lunchSubtrahendSum;
+	}else if(mealtime == "dinner"){
+		if ($scope.checkboxes[idcheck]){
+			dinnerSubtrahend[idcheck]=caloriesPerGr*caloriesThisProduct;
+		}else{
+			dinnerSubtrahend[idcheck]=0;
+		}
+		dinnerSubtrahendSum=0;
+		
+		dinnerSubtrahendSum.forEach(arg => {
+			dinnerSubtrahendSum += arg;
+		 });
+		
+		$scope.sumCalories.dinner = dinnerSubtrahendSum;
+	}
+}
+
 });
 </script>
 
