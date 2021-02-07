@@ -137,6 +137,10 @@
 			    </tr>
 			 </tbody>
 		</table>
+		
+		<div class="alert alert-danger" role="alert" ng-if="meals.breakfastError>0">
+ 			You have got <strong>{{(meals.breakfastError).toFixed(0);}}</strong> extra calories!
+		</div>
       	<h4>Select the categories you would like to compose your breakfast menu:</h4>
       	</div>
       	<div class="form-row">

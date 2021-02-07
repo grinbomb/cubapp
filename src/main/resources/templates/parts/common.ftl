@@ -67,6 +67,7 @@ myApp.controller('AppController', function ($scope, $http) {
 
 $scope.meals = {
 		breakfast:0,
+		breakfastError:0,
 		afterbreakfast:0,
 		lunch:0,
 		afterlunch:0,
@@ -121,7 +122,18 @@ $scope.calculateEat = function(caloriesPerGr, caloriesThisProduct, mealtime, idc
 			breakfastSubtrahendSum += arg;
 		 });
 		
+		if((breakfastSubtrahendSum-$scope.meals.breakfast)>10){
+				$scope.meals.breakfastError=breakfastSubtrahendSum-$scope.meals.breakfast;
+		}else{
+				$scope.meals.breakfastError=0;
+		}
+		
+		if(breakfastSubtrahendSum > $scope.meals.breakfast){
+			breakfastSubtrahendSum = $scope.meals.breakfast;
+		}
+		
 		$scope.sumCalories.breakfast = breakfastSubtrahendSum;
+		
 	}else if(mealtime == "lunch"){
 		if ($scope.checkboxes[idcheck]){
 			lunchSubtrahend[idcheck]=caloriesPerGr*caloriesThisProduct;
