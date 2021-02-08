@@ -103,10 +103,9 @@
 
 <h3>You can compose your daily diet by choosing the foods you like, and we will calculate how many PFC and calories you get in the end.</h3>
 
-<div id="accordion" ng-app="AppMenu" ng-controller = "AppController">
+<div id="accordion" ng-app="AppMenu" ng-controller = "AppController"> <!-- NG-CONTROLLER STARTS HERE -->
 
-<!-- Pop-up area for BREAKFAST menu -->
-  <div class="card" style="background-color:#DCECFC;">
+  <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for BREAKFAST menu -->
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -114,35 +113,36 @@
         </button>
       </h5>
     </div>
-	<!-- Menu selections area for BREAKFAST -->
 	
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"> <!-- NG-CONTROLLER STARTS HERE -->
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne"> <!-- Menu selections area for BREAKFAST -->
       	<div class="card-body">
-      	<div style="margin-bottom: 1%;">
+      	<div class="sticky-top" style="margin-bottom: 1%;">
       	<table class="table table-striped mt-1">
   			<thead>
     			<tr>
-			      <th scope="col">Proteins</th>
-			      <th scope="col">Fats</th>
-			      <th scope="col">Carbohydrates</th>
-			      <th scope="col">Calories</th>
+			      <th class="table-warning" scope="col">Proteins</th>
+			      <th class="table-warning" scope="col">Fats</th>
+			      <th class="table-warning" scope="col">Carbohydrates</th>
+			      <th class="table-warning" scope="col">Calories</th>
  			   </tr>
 		 	</thead>
   			<tbody>
 			    <tr>
-			      <td class="table-warning">${proteins} gm.</td>
-			      <td class="table-warning">${fats} gm.</td>
-			      <td class="table-warning">${carbohydrates} gm.</td>
-			      <td class="table-warning" ng-init="meals.breakfast=${calories}*0.37">{{(meals.breakfast-sumCalories.breakfast).toFixed(0);}} gm.</td>
+			      <td class="table-warning">{{(((meals.breakfast-sumCalories.breakfast)*0.30)/4.1).toFixed(0);}} gm.</td>
+			      <td class="table-warning">{{(((meals.breakfast-sumCalories.breakfast)*0.22)/9.29).toFixed(0);}} gm.</td>
+			      <td class="table-warning">{{(((meals.breakfast-sumCalories.breakfast)*0.48)/4.1).toFixed(0);}} gm.</td>
+			      <td class="table-warning" ng-init="meals.breakfast=${calories}*0.37">{{(meals.breakfast-sumCalories.breakfast).toFixed(0);}}</td>
 			    </tr>
 			 </tbody>
 		</table>
 		
-		<div class="alert alert-danger" role="alert" ng-if="meals.breakfastError>0">
- 			You have got <strong>{{(meals.breakfastError).toFixed(0);}}</strong> extra calories!
-		</div>
-      	<h4>Select the categories you would like to compose your breakfast menu:</h4>
+			<div class="alert alert-danger" role="alert" ng-if="meals.breakfastError>0">
+ 				You have got <strong>{{(meals.breakfastError).toFixed(0);}}</strong> extra calories!
+			</div>
       	</div>
+      	
+      	<h4 style="margin-bottom: 1%;">Select the categories you would like to compose your breakfast menu:</h4>
+      	
       	<div class="form-row">
       	
       	<@cat.category datatarget="breakfastMeatAndPoultry"	modelnameng="checkboxCategory.breakfast1" 	indextoarray="1" 	name="Meat and Poultry" productcategory="MEATANDPOULTRY"/>
@@ -178,13 +178,10 @@
 		<@prod.card idcss="breakfastOther" 			name="other" 			indexfromarray="14"	meal="breakfast"/>
 		
         </div>
-        <!-- Menu selections area for BREAKFAST IS OVER-->
-    </div>
-  </div>
-  <!-- Pop-up area for BREAKFAST menu IS OVER -->
+    </div> <!-- Menu selections area for BREAKFAST IS OVER-->
+  </div> <!-- Pop-up area for BREAKFAST menu IS OVER -->
   
-  <!-- Pop-up area for LUNCH menu -->
-  <div class="card" style="background-color:#DCECFC;">
+  <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for LUNCH menu -->
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -192,12 +189,36 @@
         </button>
       </h5>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo">
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"> <!-- Menu selections area for LUNCH -->
       <div class="card-body">
-      <!-- Menu selections area for LUNCH -->
-        <div style="margin-bottom: 1%;">
-      	<h4>Select the categories you would like to compose your lunch menu: </h4>
+        <div class="sticky-top" style="margin-bottom: 1%;">
+        
+        <table class="table table-striped mt-1">
+  			<thead>
+    			<tr>
+			      <th class="table-warning" scope="col">Proteins</th>
+			      <th class="table-warning" scope="col">Fats</th>
+			      <th class="table-warning" scope="col">Carbohydrates</th>
+			      <th class="table-warning" scope="col">Calories</th>
+ 			   </tr>
+		 	</thead>
+  			<tbody>
+			    <tr>
+			      <td class="table-warning">{{(((meals.lunch-sumCalories.lunch)*0.30)/4.1).toFixed(0);}} gm.</td>
+			      <td class="table-warning">{{(((meals.lunch-sumCalories.lunch)*0.22)/9.29).toFixed(0);}} gm.</td>
+			      <td class="table-warning">{{(((meals.lunch-sumCalories.lunch)*0.48)/4.1).toFixed(0);}} gm.</td>
+			      <td class="table-warning" ng-init="meals.lunch=${calories}*0.37">{{(meals.lunch-sumCalories.lunch).toFixed(0);}}</td>
+			    </tr>
+			 </tbody>
+		</table>
+        
+        	<div class="alert alert-danger" role="alert" ng-if="meals.lunchError>0">
+ 				You have got <strong>{{(meals.lunchError).toFixed(0);}}</strong> extra calories!
+			</div>
       	</div>
+      	
+      	<h4 style="margin-bottom: 1%;">Select the categories you would like to compose your lunch menu: </h4>
+      	
       	<div class="form-row">
       	<@cat.category datatarget="lunchMeatAndPoultry" modelnameng="checkboxCategory.lunch1" 	indextoarray="15" 	name="Meat and Poultry" productcategory="MEATANDPOULTRY"/>
       	<@cat.category datatarget="lunchFish" 			modelnameng="checkboxCategory.lunch2" 	indextoarray="16" 	name="Fish" 			productcategory="FISH"/>
@@ -232,12 +253,12 @@
 		<@prod.card idcss="lunchOther" 			name="other" 			indexfromarray="28"	meal="lunch"/>
 		
         </div>
-    <!-- Menu selections area for LUNCH IS OVER-->
-  </div>
-  <!-- Pop-up area for LUNCH menu IS OVER-->
+    
+  	</div> <!-- Menu selections area for LUNCH IS OVER-->
+  </div> <!-- Pop-up area for LUNCH menu IS OVER-->
   
-  <!-- Pop-up area for DINNER menu -->
-  <div class="card" style="background-color:#DCECFC;">
+  
+  <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for DINNER menu -->
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -245,12 +266,36 @@
         </button>
       </h5>
     </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree">
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"> <!-- Menu selections area for DINNER-->
       <div class="card-body">
-      <!-- Menu selections area for DINNER-->
-      <div style="margin-bottom: 1%;">
-      	<h4>Select the categories you would like to compose your dinner menu: </h4>
+      	<div class="sticky-top" style="margin-bottom: 1%;">
+      
+      <table class="table table-striped mt-1">
+  			<thead>
+    			<tr>
+			      <th class="table-warning" scope="col">Proteins</th>
+			      <th class="table-warning" scope="col">Fats</th>
+			      <th class="table-warning" scope="col">Carbohydrates</th>
+			      <th class="table-warning" scope="col">Calories</th>
+ 			   </tr>
+		 	</thead>
+  			<tbody>
+			    <tr>
+			      <td class="table-warning">{{(((meals.dinner-sumCalories.dinner)*0.30)/4.1).toFixed(0);}} gm.</td>
+			      <td class="table-warning">{{(((meals.dinner-sumCalories.dinner)*0.22)/9.29).toFixed(0);}} gm.</td>
+			      <td class="table-warning">{{(((meals.dinner-sumCalories.dinner)*0.48)/4.1).toFixed(0);}} gm.</td>
+			      <td class="table-warning" ng-init="meals.dinner=${calories}*0.26">{{(meals.dinner-sumCalories.dinner).toFixed(0);}}</td>
+			    </tr>
+			 </tbody>
+		</table>
+      
+      		<div class="alert alert-danger" role="alert" ng-if="meals.dinnerError>0">
+ 				You have got <strong>{{(meals.dinnerError).toFixed(0);}}</strong> extra calories!
+			</div>
       	</div>
+      	
+      	<h4 style="margin-bottom: 1%;">Select the categories you would like to compose your dinner menu: </h4>
+      	
       	<div class="form-row">
       	
 		<@cat.category datatarget="dinnerMeatAndPoultry"	modelnameng="checkboxCategory.dinner1" 		indextoarray="29" 	name="Meat and Poultry" productcategory="MEATANDPOULTRY"/>
@@ -286,10 +331,10 @@
 		<@prod.card idcss="dinnerOther" 			name="other" 			indexfromarray="42"	meal="dinner"/>
 		
         </div>
-       <!-- Menu selections area for DINNER IS OVER-->
-    </div>
-  </div>
-  <!-- Pop-up area for DINNER menu -->
+       
+    </div> <!-- Menu selections area for DINNER IS OVER-->
+  </div> <!-- Pop-up area for DINNER menu -->
+  
 </div>
 </#if>
 </@c.page>

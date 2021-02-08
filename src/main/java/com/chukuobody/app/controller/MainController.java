@@ -78,9 +78,9 @@ public class MainController {
 		}
 		
 		double calories = intensityConst * ( 10*Integer.parseInt(weight) + 6.25*Integer.parseInt(height) - 5*Integer.parseInt(age) + genderConst),
-				proteins = (calories*0.48)/4.1,
+				proteins = (calories*0.30)/4.1,
 				fats = (calories*0.22)/9.29,
-				carbohydrates = (calories*0.30)/4.1;
+				carbohydrates = (calories*0.48)/4.1;
 		
 		int caloriesInt = (int)Math.round(calories);
 		

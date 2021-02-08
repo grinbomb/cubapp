@@ -75,92 +75,109 @@ $scope.meals = {
 };
 
 $scope.cards = [];
-$scope.recgram = [];
-$scope.checkboxes = [];
+$scope.breakfastrecgram = [];
+$scope.lunchrecgram = [];
+$scope.dinnerrecgram = [];
+$scope.breakfast = [];
+$scope.lunch = [];
+$scope.dinner = [];
 
 $scope.change = function(eatid, eatcategory){
 	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory}).then(function(response){
 		$scope.cards[eatid] = response.data;
      });};
      
-$scope.recount = function(recid, recgr){
-	$scope.recgram[recid]=1;
-		if (recgr > 9999999) {
-			$scope.recgram[recid] = 9999999;
-		}else if(recgr < 1) {
-			$scope.recgram[recid] = 1;
-		}else{
-		$scope.recgram[recid] = recgr;
-		}
-    	};
+$scope.recount = function(recid, recgr, mealtime){
+	if(mealtime == "breakfast"){
+		$scope.breakfastrecgram[recid] = recountForTheCard($scope.breakfastrecgram, recid, recgr);
+	}else if(mealtime == "lunch"){
+		$scope.lunchrecgram[recid] = recountForTheCard($scope.lunchrecgram, recid, recgr);
+	}else if(mealtime == "dinner"){
+		$scope.dinnerrecgram[recid] = recountForTheCard($scope.dinnerrecgram, recid, recgr);
+	}
+	};
 
-    	var breakfastSubtrahend = [];
-    	//var breakfastSubtrahend = [];
-    	var lunchSubtrahend = [];
-    	//var breakfastSubtrahend = [];
-    	var dinnerSubtrahend = [];
+	//if (recgr > 9999999) {
+	//	$scope.breakfastrecgram[recid] = 9999999;
+	//}else if(recgr < 1) {
+	//	$scope.breakfastrecgram[recid] = 1;
+	//}else{
+	//$scope.breakfastrecgram[recid] = recgr;
+	//}
+	
+function recountForTheCard(mealGramsByProductList, id, grm){
+	if (grm > 9999999) {
+		mealGramsByProductList[id] = 9999999;
+	}else if(grm < 1) {
+		mealGramsByProductList[id] = 1;
+	}else{
+		mealGramsByProductList[id] = grm;
+	}
+	return mealGramsByProductList[id];
+}
+    	
+    	var breakfastProductList = [];
+    	//var preLunchSubtrahend = [];
+    	var lunchProductList = [];
+    	//var preDinnerSubtrahend = [];
+    	var dinnerProductList = [];
+    	
     	$scope.sumCalories={
     			breakfast:0,
     			lunch:0,
     			dinner:0
     	};
-    	var breakfastSubtrahendSum = 0, lunchSubtrahendSum=0, dinnerSubtrahendSum=0;
+    	var breakfastSubtrahendSum = 0, lunchSubtrahendSum = 0, dinnerSubtrahendSum = 0;
 
-$scope.calculateEat = function(caloriesPerGr, caloriesThisProduct, mealtime, idcheck){
+$scope.calculateEat = function(caloriesPerOneGrm, caloriesThisProduct, mealtime, idThisProduct){
 
-	breakfastSubtrahend[idcheck]=0;
+	//breakfastSubtrahend[idcheck]=0;
 
 	if(mealtime == "breakfast"){
-		if ($scope.checkboxes[idcheck]){
-			breakfastSubtrahend[idcheck]=caloriesPerGr*caloriesThisProduct;
-		}else{
-			breakfastSubtrahend[idcheck]=0;
-		}
-		breakfastSubtrahendSum=0;
 		
-		breakfastSubtrahend.forEach(arg => {
-			breakfastSubtrahendSum += arg;
-		 });
-		
-		if((breakfastSubtrahendSum-$scope.meals.breakfast)>10){
-				$scope.meals.breakfastError=breakfastSubtrahendSum-$scope.meals.breakfast;
-		}else{
-				$scope.meals.breakfastError=0;
-		}
-		
-		if(breakfastSubtrahendSum > $scope.meals.breakfast){
-			breakfastSubtrahendSum = $scope.meals.breakfast;
-		}
-		
-		$scope.sumCalories.breakfast = breakfastSubtrahendSum;
+		var retVals = mealCaloriesRecount(idThisProduct, breakfastProductList, breakfastSubtrahendSum, caloriesThisProduct, caloriesPerOneGrm, $scope.meals.breakfast, $scope.meals.breakfastError, $scope.breakfast);
+		$scope.sumCalories.breakfast = retVals[0];
+		$scope.meals.breakfastError = retVals[1];
 		
 	}else if(mealtime == "lunch"){
-		if ($scope.checkboxes[idcheck]){
-			lunchSubtrahend[idcheck]=caloriesPerGr*caloriesThisProduct;
-		}else{
-			lunchSubtrahend[idcheck]=0;
-		}
-		lunchSubtrahendSum=0;
 		
-		lunchSubtrahendSum.forEach(arg => {
-			lunchSubtrahendSum += arg;
-		 });
+		var retVals = mealCaloriesRecount(idThisProduct, lunchProductList, lunchSubtrahendSum, caloriesThisProduct, caloriesPerOneGrm, $scope.meals.lunch, $scope.meals.lunchError, $scope.lunch);
+		$scope.sumCalories.lunch = retVals[0];
+		$scope.meals.lunchError = retVals[1];
 		
-		$scope.sumCalories.lunch = lunchSubtrahendSum;
 	}else if(mealtime == "dinner"){
-		if ($scope.checkboxes[idcheck]){
-			dinnerSubtrahend[idcheck]=caloriesPerGr*caloriesThisProduct;
-		}else{
-			dinnerSubtrahend[idcheck]=0;
-		}
-		dinnerSubtrahendSum=0;
 		
-		dinnerSubtrahendSum.forEach(arg => {
-			dinnerSubtrahendSum += arg;
-		 });
+		var retVals = mealCaloriesRecount(idThisProduct, dinnerProductList, dinnerSubtrahendSum, caloriesThisProduct, caloriesPerOneGrm, $scope.meals.dinner, $scope.meals.dinnerError, $scope.dinner);
+		$scope.sumCalories.dinner = retVals[0];
+		$scope.meals.dinnerError = retVals[1];
 		
-		$scope.sumCalories.dinner = dinnerSubtrahendSum;
 	}
+}
+
+function mealCaloriesRecount(id, selectedProductsList, sumMealCalories, caloriesProduct, caloriesUserEntered, normalMealCalories, mealErrorCalories, checkboxes){
+	
+	if (checkboxes[id]){
+		selectedProductsList[id]=caloriesUserEntered*caloriesProduct;
+	}else{
+		selectedProductsList[id]=0;
+	}
+	sumMealCalories=0;
+	
+	selectedProductsList.forEach(arg => {
+		sumMealCalories += arg;
+	 });
+	
+	if((sumMealCalories-normalMealCalories)>10){
+		mealErrorCalories=sumMealCalories-normalMealCalories;
+	}else{
+		mealErrorCalories=0;
+	}
+	
+	if(sumMealCalories > normalMealCalories){
+		sumMealCalories = normalMealCalories;
+	}
+	
+	return [sumMealCalories, mealErrorCalories];
 }
 
 });
