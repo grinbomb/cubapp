@@ -13,5 +13,24 @@
                 <a class="nav-link" href="/createcard">Add new card</a>
             </li>
         </ul>
+        <span class="navbar-text">
+      		<ul class="navbar-nav mr-auto">
+	            <li class="nav-item">
+	                <a class="nav-link" href="/login">Login</a>
+	            </li>
+	        	<li class="nav-item">
+	                <a class="nav-link">/</a>
+            	</li>
+	            <li class="nav-item">
+	                <a class="nav-link" href="/registration">Registration</a>
+            	</li>
+            	<li class="nav-item">
+				    <form action="/logout" method="post">
+				        <input type="hidden" name="_csrf" value="${_csrf.token}" />
+				        <button type="submit" class="btn btn-secondary">Sign Out</button>
+				    </form>
+   			 	</li>
+        	</ul>
+    	</span>
     </div>
 </nav>
