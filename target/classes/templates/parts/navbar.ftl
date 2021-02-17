@@ -12,6 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/createcard">Add new card</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user">User list</a>
+            </li>
         </ul>
         <span class="navbar-text">
       		<ul class="navbar-nav mr-auto">
