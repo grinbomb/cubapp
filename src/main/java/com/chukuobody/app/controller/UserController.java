@@ -26,7 +26,7 @@ public class UserController {
     public String userList(Model model) {
         model.addAttribute("users", userRepo.findAll());
 
-        return "userList";
+        return "userlist";
     }
 
     @GetMapping("{user}")
@@ -34,7 +34,7 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
 
-        return "userEdit";
+        return "useredit";
     }
 
     @PostMapping
