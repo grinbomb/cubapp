@@ -9,11 +9,19 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
+    <label for="password">Password:</label>
     <div class="col-sm-6">
-    	<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+    	<input type="password" class="form-control" name="password" id="password" placeholder="Enter password">
     </div>
   </div>
+  <#if act!="Sign In">
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <div class="col-sm-6">
+    	<input type="email" class="form-control" name="email" id="email" placeholder="name@somemail.com">
+    </div>
+  </div>
+  </#if>
   <input type="hidden" name="_csrf" value="${_csrf.token}" />
   <button type="submit" class="btn btn-primary">${act}</button>
   <#if act=="Sign In">
