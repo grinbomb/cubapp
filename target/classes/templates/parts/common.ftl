@@ -64,7 +64,7 @@ myApp.controller('ControllerNewCard', function ($scope, $http) {
 
 var myApp = angular.module('AppMenu',[]);
 myApp.controller('AppController', function ($scope, $http) {
-
+	
 $scope.meals = {
 		breakfast:0,
 		breakfastError:0,
@@ -75,6 +75,7 @@ $scope.meals = {
 };
 
 $scope.cards = [];
+
 $scope.breakfastrecgram = [];
 $scope.lunchrecgram = [];
 $scope.dinnerrecgram = [];
@@ -83,9 +84,15 @@ $scope.lunch = [];
 $scope.dinner = [];
 
 $scope.change = function(eatid, eatcategory){
-	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory}).then(function(response){
-		$scope.cards[eatid] = response.data;
-     });};
+	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory},{headers:getCsrfHeader()}).then(
+			function(response){
+				$scope.cards[eatid] = response.data;
+				console.log(response);
+     		},
+			function(response){
+				console.log(response);
+			});
+	};
      
 $scope.recount = function(recid, recgr, mealtime){
 	if(mealtime == "breakfast"){
@@ -97,13 +104,14 @@ $scope.recount = function(recid, recgr, mealtime){
 	}
 	};
 
-	//if (recgr > 9999999) {
-	//	$scope.breakfastrecgram[recid] = 9999999;
-	//}else if(recgr < 1) {
-	//	$scope.breakfastrecgram[recid] = 1;
-	//}else{
-	//$scope.breakfastrecgram[recid] = recgr;
-	//}
+function getCsrfHeader() {
+		var csrfToken = $("input[name='_csrf']").val();
+
+		var headers = {}; 
+		headers["X-CSRF-TOKEN"] = csrfToken;
+		headers["_csrf"] = csrfToken;
+		return headers;
+		};
 	
 function recountForTheCard(mealGramsByProductList, id, grm){
 	if (grm > 9999999) {

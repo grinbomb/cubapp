@@ -334,7 +334,7 @@
        
     </div> <!-- Menu selections area for DINNER IS OVER-->
   </div> <!-- Pop-up area for DINNER menu -->
-  
+  <input type="hidden" name="_csrf" value="${_csrf.token}" />
 </div>
 </#if>
 </@c.page>
