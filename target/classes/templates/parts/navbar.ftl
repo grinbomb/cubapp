@@ -1,7 +1,8 @@
 <#include "security.ftl">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">CUB</a>
+    <a class="navbar-brand" href="/"><h1 class="text-hide" style="background-image: url('https://i.ibb.co/s3DLrRy/1.png'); width: 50px; height: 50px;">CuB</h1></a>
+    
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -11,6 +12,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/calculator">Calculator</a>
             </li>
+            <#if isAuthorized>
+            <li class="nav-item">
+                <a class="nav-link" href="/selectedmenu">Your menu</a>
+            </li>
+            </#if>
             <#if isAdmin>
 	            <li class="nav-item">
 	                <a class="nav-link" href="/createcard">Add new card</a>

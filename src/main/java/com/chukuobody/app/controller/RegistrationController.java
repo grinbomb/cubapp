@@ -52,6 +52,8 @@ public class RegistrationController {
         if (!userService.addUser(user)) {
             model.addAttribute("message", "This user already exists!");
             return "registration";
+        } else {
+        	model.addAttribute("message", "An activation code was sent to the specified mail");
         }
 
         return "redirect:/login";

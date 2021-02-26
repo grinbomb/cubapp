@@ -41,11 +41,11 @@
   	<label>Choose your gender</label>
   	
 		<div class="btn-group btn-group-toggle px-0 py-0 form-control ${(errorValueGender??)?string('is-invalid', '')}" style="width:100%;" data-toggle="buttons">
-  			<label class="btn btn-outline-warning" style="min-width: 50%;">
-    			<input type="radio" name="sex" id="male" value="male"> <strong>Male</strong>
+  			<label class="btn btn-outline-warning ${activeMaleBox}" style="min-width: 50%;">
+    			<input type="radio" name="sex" id="male" value="male" ${checkedMaleBox}> <strong>Male</strong>
   			</label>
-  			<label class="btn btn-outline-danger" style="min-width: 50%;">
-    			<input type="radio" name="sex" id="female" value="female" > <strong>Female</strong>
+  			<label class="btn btn-outline-danger ${activeFemaleBox}" style="min-width: 50%;">
+    			<input type="radio" name="sex" id="female" value="female" ${checkedFemaleBox}> <strong>Female</strong>
   			</label>
 		</div>
 		<#if errorValueGender??>
@@ -58,11 +58,11 @@
 		<label>Choose your daily intensity</label>
     	<select class="form-control ${(errorValueIntensity??)?string('is-invalid', '')}" name="intensity">
     	<option hidden=""></option>
-      	<option>Min</option>
-      	<option>Low</option>
-      	<option>Medium</option>
-      	<option>Hard</option>
-      	<option>Max</option>
+      	<option value="Min" ${selectedMin}>Min (sedentary work that does not require significant physical exertion)</option>
+      	<option value="Low" ${selectedLow}>Low (intense exercise for at least 20 minutes 1-3 times a week)</option>
+      	<option value="Medium" ${selectedMedium}>Medium (intensive training for at least 30-60 minutes 3-4 times a week)</option>
+      	<option value="Hard" ${selectedHard}>Hard (intense exercise and sports 5-7 days a week)</option>
+      	<option value="Max" ${selectedMax}>Max (extremely active and / or very energy intensive activities)</option>
     </select>
     <#if errorValueIntensity??>
 	   		<div class="alert alert-danger text-center" role="alert">

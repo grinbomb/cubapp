@@ -18,7 +18,18 @@ public class MainController {
     }
 	
 	@GetMapping("/calculator")
-	public String somecalctest() {
+	public String somecalctest(Model model) {
+		
+		model.addAttribute("activeMaleBox", "");
+		model.addAttribute("activeFemaleBox", "");
+		model.addAttribute("checkedMaleBox", "");
+		model.addAttribute("checkedFemaleBox", "");
+		
+		model.addAttribute("selectedMin", "");
+		model.addAttribute("selectedLow", "");
+		model.addAttribute("selectedMedium", "");
+		model.addAttribute("selectedHard", "");
+		model.addAttribute("selectedMax", "");
 		
         return "calculator";
     }
@@ -38,11 +49,92 @@ public class MainController {
 		model.addAttribute("height", height);
 		model.addAttribute("age", age);
 		
-		if(weight.isEmpty())errorList.put("errorValueWeight", "Weight must not be empty.");
-		if(height.isEmpty())errorList.put("errorValueHeight", "Height must not be empty.");
-		if(age.isEmpty())errorList.put("errorValueAge", "Age must not be empty.");
-		if(intensity.isEmpty())errorList.put("errorValueIntensity", "Intensity must not be empty.");
-		if(sex.isEmpty())errorList.put("errorValueGender", "Gender must not be empty.");
+		model.addAttribute("selectedMin", "");
+		model.addAttribute("selectedLow", "");
+		model.addAttribute("selectedMedium", "");
+		model.addAttribute("selectedHard", "");
+		model.addAttribute("selectedMax", "");
+		
+		model.addAttribute("activeMaleBox", "");
+		model.addAttribute("activeFemaleBox", "");
+		model.addAttribute("checkedMaleBox", "");
+		model.addAttribute("checkedFemaleBox", "");
+		
+		int genderConst = 0;
+		double intensityConst = 0;
+		
+		int weightInt,
+			heightInt,
+			ageInt;
+		
+		try {
+				weightInt = Integer.parseInt(weight);
+		}
+		catch (NumberFormatException e)
+		{
+				weightInt = 0;
+		}
+		try {
+				heightInt = Integer.parseInt(height);
+		}
+		catch (NumberFormatException e)
+		{
+				heightInt = 0;
+		}
+		try {
+				ageInt = Integer.parseInt(age);
+		}
+		catch (NumberFormatException e)
+		{
+				ageInt = 0;
+		}
+		
+		if(weight.isEmpty())
+			errorList.put("errorValueWeight", "Weight must not be empty.");
+		else if(weightInt>1000||weightInt<=0)
+			errorList.put("errorValueWeight", "Weight must not be less than or equal to 0 and cannot exceed 1000.");
+		if(height.isEmpty())
+			errorList.put("errorValueHeight", "Height must not be empty.");
+		else if(heightInt>400||heightInt<=0)
+			errorList.put("errorValueHeight", "Height must not be less than or equal to 0 and cannot exceed 400.");
+		if(age.isEmpty())
+			errorList.put("errorValueAge", "Age must not be empty.");
+		else if(ageInt<13||ageInt>80)
+			errorList.put("errorValueAge", "Age must not be less than 13 and cannot exceed 80.");
+		if(intensity.isEmpty())
+			errorList.put("errorValueIntensity", "Intensity must not be empty.");
+		else {
+			switch (intensity) {
+			case "Min":
+				model.addAttribute("selectedMin", "selected");
+				break;
+			case "Low":
+				model.addAttribute("selectedLow", "selected");
+				break;
+			case "Medium":
+				model.addAttribute("selectedMedium", "selected");
+				break;
+			case "Hard":
+				model.addAttribute("selectedHard", "selected");
+				break;
+			case "Max":
+				model.addAttribute("selectedMax", "selected");
+				break;
+			}
+		}
+		if(sex.isEmpty())
+			errorList.put("errorValueGender", "Gender must not be empty.");
+		else {
+			if(sex.equals("male")) {
+				model.addAttribute("activeMaleBox", "active");
+				model.addAttribute("checkedMaleBox", "checked");
+			}else if(sex.equals("female")) {
+				model.addAttribute("activeFemaleBox", "active");
+				model.addAttribute("checkedFemaleBox", "checked");
+			}
+				
+		}
+		
 		
 		if(!errorList.isEmpty()) {
 			for(Map.Entry<String, String> entry : errorList.entrySet()) {
@@ -51,11 +143,13 @@ public class MainController {
 			return "calculator";
 		}
 		
-		int genderConst = 0;
-		if(sex.equals("male")) genderConst = 5;
-		else if(sex.equals("female")) genderConst = -161;
+		if(sex.equals("male")) {
+			genderConst = 5;
+		}
+		else if(sex.equals("female")) {
+			genderConst = -161;
+		}
 		
-		double intensityConst = 0;
 		switch (intensity) {
 		case "Min":
 			intensityConst = 1.200;
@@ -74,7 +168,7 @@ public class MainController {
 			break;
 		}
 		
-		double calories = intensityConst * ( 10*Integer.parseInt(weight) + 6.25*Integer.parseInt(height) - 5*Integer.parseInt(age) + genderConst),
+		double calories = intensityConst * (10*weightInt + 6.25*heightInt - 5*ageInt + genderConst),
 				proteins = (calories*0.30)/4.1,
 				fats = (calories*0.22)/9.29,
 				carbohydrates = (calories*0.48)/4.1;
