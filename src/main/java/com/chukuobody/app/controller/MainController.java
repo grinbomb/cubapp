@@ -45,6 +45,7 @@ public class MainController {
 	{
 		
 		Map<String, String> errorList = new HashMap<String, String>();
+		
 		model.addAttribute("weight", weight);
 		model.addAttribute("height", height);
 		model.addAttribute("age", age);

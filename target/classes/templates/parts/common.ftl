@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="shortcut icon" href="#" />
 </head>
 
 <body style="   color: #055CAD;
@@ -83,6 +84,19 @@ $scope.breakfast = [];
 $scope.lunch = [];
 $scope.dinner = [];
 
+var breakfastProductList = [];
+//var preLunchSubtrahend = [];
+var lunchProductList = [];
+//var preDinnerSubtrahend = [];
+var dinnerProductList = [];
+
+$scope.sumCalories={
+		breakfast:0,
+		lunch:0,
+		dinner:0
+};
+var breakfastSubtrahendSum = 0, lunchSubtrahendSum = 0, dinnerSubtrahendSum = 0;
+
 $scope.change = function(eatid, eatcategory){
 	$http.post('http://localhost:8080/api/calculator',{subject:eatcategory},{headers:getCsrfHeader()}).then(
 			function(response){
@@ -93,7 +107,16 @@ $scope.change = function(eatid, eatcategory){
 				console.log(response);
 			});
 	};
-     
+	
+function getCsrfHeader() {
+		var csrfToken = $("input[name='_csrf']").val();
+
+		var headers = {}; 
+		headers["X-CSRF-TOKEN"] = csrfToken;
+		headers["_csrf"] = csrfToken;
+		return headers;
+		}; 
+		
 $scope.recount = function(recid, recgr, mealtime){
 	if(mealtime == "breakfast"){
 		$scope.breakfastrecgram[recid] = recountForTheCard($scope.breakfastrecgram, recid, recgr);
@@ -103,15 +126,6 @@ $scope.recount = function(recid, recgr, mealtime){
 		$scope.dinnerrecgram[recid] = recountForTheCard($scope.dinnerrecgram, recid, recgr);
 	}
 	};
-
-function getCsrfHeader() {
-		var csrfToken = $("input[name='_csrf']").val();
-
-		var headers = {}; 
-		headers["X-CSRF-TOKEN"] = csrfToken;
-		headers["_csrf"] = csrfToken;
-		return headers;
-		};
 	
 function recountForTheCard(mealGramsByProductList, id, grm){
 	if (grm > 9999999) {
@@ -123,49 +137,34 @@ function recountForTheCard(mealGramsByProductList, id, grm){
 	}
 	return mealGramsByProductList[id];
 }
-    	
-    	var breakfastProductList = [];
-    	//var preLunchSubtrahend = [];
-    	var lunchProductList = [];
-    	//var preDinnerSubtrahend = [];
-    	var dinnerProductList = [];
-    	
-    	$scope.sumCalories={
-    			breakfast:0,
-    			lunch:0,
-    			dinner:0
-    	};
-    	var breakfastSubtrahendSum = 0, lunchSubtrahendSum = 0, dinnerSubtrahendSum = 0;
 
-$scope.calculateEat = function(caloriesPerOneGrm, caloriesThisProduct, mealtime, idThisProduct){
-
-	//breakfastSubtrahend[idcheck]=0;
+$scope.calculateEat = function(caloriesPerOneGrm, gramUserEntered, mealtime, idThisProduct){
 
 	if(mealtime == "breakfast"){
 		
-		var retVals = mealCaloriesRecount(idThisProduct, breakfastProductList, breakfastSubtrahendSum, caloriesThisProduct, caloriesPerOneGrm, $scope.meals.breakfast, $scope.meals.breakfastError, $scope.breakfast);
+		var retVals = mealCaloriesRecount(idThisProduct, breakfastProductList, breakfastSubtrahendSum, gramUserEntered, caloriesPerOneGrm, $scope.meals.breakfast, $scope.meals.breakfastError, $scope.breakfast);
 		$scope.sumCalories.breakfast = retVals[0];
 		$scope.meals.breakfastError = retVals[1];
 		
 	}else if(mealtime == "lunch"){
 		
-		var retVals = mealCaloriesRecount(idThisProduct, lunchProductList, lunchSubtrahendSum, caloriesThisProduct, caloriesPerOneGrm, $scope.meals.lunch, $scope.meals.lunchError, $scope.lunch);
+		var retVals = mealCaloriesRecount(idThisProduct, lunchProductList, lunchSubtrahendSum, gramUserEntered, caloriesPerOneGrm, $scope.meals.lunch, $scope.meals.lunchError, $scope.lunch);
 		$scope.sumCalories.lunch = retVals[0];
 		$scope.meals.lunchError = retVals[1];
 		
 	}else if(mealtime == "dinner"){
 		
-		var retVals = mealCaloriesRecount(idThisProduct, dinnerProductList, dinnerSubtrahendSum, caloriesThisProduct, caloriesPerOneGrm, $scope.meals.dinner, $scope.meals.dinnerError, $scope.dinner);
+		var retVals = mealCaloriesRecount(idThisProduct, dinnerProductList, dinnerSubtrahendSum, gramUserEntered, caloriesPerOneGrm, $scope.meals.dinner, $scope.meals.dinnerError, $scope.dinner);
 		$scope.sumCalories.dinner = retVals[0];
 		$scope.meals.dinnerError = retVals[1];
 		
 	}
 }
 
-function mealCaloriesRecount(id, selectedProductsList, sumMealCalories, caloriesProduct, caloriesUserEntered, normalMealCalories, mealErrorCalories, checkboxes){
+function mealCaloriesRecount(id, selectedProductsList, sumMealCalories, gramUserEntered, caloriesPerOneGrm, normalMealCalories, mealErrorCalories, checkboxes){
 	
 	if (checkboxes[id]){
-		selectedProductsList[id]=caloriesUserEntered*caloriesProduct;
+		selectedProductsList[id]=caloriesPerOneGrm*gramUserEntered;
 	}else{
 		selectedProductsList[id]=0;
 	}

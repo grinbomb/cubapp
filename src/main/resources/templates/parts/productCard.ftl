@@ -29,7 +29,7 @@
   				<div class="card-footer" style="background-color: white;">
   					<div class="btn-group-toggle text-center" data-toggle="buttons">
   						<label class="btn btn-outline-success" style="min-width:80%;">
-    						<input type="checkbox" autocomplete="off" ng-model="${meal}[item.id]" ng-change="calculateEat(item.caloriesPG, ${meal}recgram[item.id], '${meal}', item.id);" > Select
+    						<input type="checkbox" autocomplete="off" ng-model="${meal}[item.id]" ng-change="calculateEat(item.caloriesPG, ${meal}recgram[item.id], '${meal}', item.id);" name="productCards" value="{{${meal}recgram[item.id]}},{{item.id}},${meal}" > Select
   						</label>
 					</div>
   				</div>

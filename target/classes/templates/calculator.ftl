@@ -102,13 +102,13 @@
 </table>
 
 <h3>You can compose your daily diet by choosing the foods you like, and we will calculate how many PFC and calories you get in the end.</h3>
-
+<form method="post" enctype="multipart/form-data" action="/savemenu">
 <div id="accordion" ng-app="AppMenu" ng-controller = "AppController"> <!-- NG-CONTROLLER STARTS HERE -->
 
   <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for BREAKFAST menu -->
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" type="button">
           Breakfast 
         </button>
       </h5>
@@ -184,7 +184,7 @@
   <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for LUNCH menu -->
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="button">
           Lunch
         </button>
       </h5>
@@ -261,7 +261,7 @@
   <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for DINNER menu -->
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="button">
           Dinner
         </button>
       </h5>
@@ -334,7 +334,13 @@
        
     </div> <!-- Menu selections area for DINNER IS OVER-->
   </div> <!-- Pop-up area for DINNER menu -->
+  <div class="form-group">
+    <label for="inputDate">Select date:</label>
+    <input type="date" class="form-control" name="localDate">
+  </div>
   <input type="hidden" name="_csrf" value="${_csrf.token}" />
+  <button type="submit" class="btn btn-primary">Save selected cards</button>
 </div>
+</form>
 </#if>
 </@c.page>
