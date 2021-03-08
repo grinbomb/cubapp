@@ -2,7 +2,6 @@ package com.chukuobody.app.controller;
 
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -35,17 +34,25 @@ public class UserController {
     }
 
     @GetMapping("{user}")
-    public String userEditForm(@PathVariable User user, Model model) {
+    public String userEditForm(@PathVariable User user,
+    		Model model) {
         model.addAttribute("user", user);
         model.addAttribute("roles", Role.values());
-
+        
         return "useredit";
     }
 
     @PostMapping("/delete/{id}")
     public String userDeleter(
-    		@PathVariable("id") Long id) {
-
+    		@PathVariable("id") Long id) {	
+    	
+    	Iterable<Role> userRoles = userRepo.findById(id).get().getRoles();
+    	for (Role role : userRoles) {
+			if(role.equals(Role.ADMIN)) {
+				return "redirect:/user";
+			}
+		}
+    	
     	userRepo.deleteById(id);
     
     	return "redirect:/user";

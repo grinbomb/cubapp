@@ -1,6 +1,7 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/productCard.ftl" as prod>
 <#import "parts/category.ftl" as cat>
+<#include "parts/security.ftl">
 
 <@c.page>
   
@@ -334,12 +335,21 @@
        
     </div> <!-- Menu selections area for DINNER IS OVER-->
   </div> <!-- Pop-up area for DINNER menu -->
-  <div class="form-group">
-    <label for="inputDate">Select date:</label>
-    <input type="date" class="form-control" name="localDate">
-  </div>
+  <#if isAuthorized> 
+	  <div class="form-group m-1">
+	    	<label for="inputDate">Select date:</label>
+	    	<input type="date" class="form-control" name="selectedDate" ng-model="selectedDate" ng-change="checkMenuDate(selectedDate)" ng-init="selectedDate = date | date: 'yyyy-MM-dd'; checkMenuDate(selectedDate)">
+	    	<div class="alert alert-danger" role="alert" ng-if="isNotFreeDate">
+	    		<h3>Attention!</h3> You already have a menu selected for that date. If you want to change it: go to the section "Your menu", select this date and make the necessary changes!
+			</div>
+	  </div>
+	  	<button type="submit" class="btn btn-primary m-1" ng-if="!isNotFreeDate">Save menu</button>
+  <#else>
+	 	<button type="button" class="btn btn-secondary m-1" data-container="body" data-toggle="popover" data-placement="right" data-content="To save the menu you need to log in!">
+ 			Save menu
+		</button>
+  </#if>
   <input type="hidden" name="_csrf" value="${_csrf.token}" />
-  <button type="submit" class="btn btn-primary">Save selected cards</button>
 </div>
 </form>
 </#if>

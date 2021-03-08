@@ -36,6 +36,12 @@
 <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
 
 <script>
+$(function() {
+	  $('[data-toggle="popover"]').popover({
+	    trigger: 'focus'
+	  }); 
+	})
+
 var myApp = angular.module('AppNewCard',[]);
 myApp.controller('ControllerNewCard', function ($scope, $http) {
 	 $scope.product={
@@ -65,6 +71,8 @@ myApp.controller('ControllerNewCard', function ($scope, $http) {
 
 var myApp = angular.module('AppMenu',[]);
 myApp.controller('AppController', function ($scope, $http) {
+	
+$scope.date = new Date();
 	
 $scope.meals = {
 		breakfast:0,
@@ -186,6 +194,19 @@ function mealCaloriesRecount(id, selectedProductsList, sumMealCalories, gramUser
 	
 	return [sumMealCalories, mealErrorCalories];
 }
+
+$scope.checkMenuDate = function(selectedDate){
+	$http.post('http://localhost:8080/api/savemenu',{subject:selectedDate},{headers:getCsrfHeader()}).then(
+			function(response){
+				$scope.isNotFreeDate = response.data;
+				console.log(response);
+				console.log(selectedDate);
+     		},
+			function(response){
+				console.log(response);
+				console.log(selectedDate);
+			});
+	};
 
 });
 </script>

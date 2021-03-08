@@ -19,7 +19,9 @@
 	      <td><a href="/user/${user.id}">edit</a></td>
 	      <td>
 			<input type="hidden" name="_csrf" value="${_csrf.token}" />
-			<input type="submit" class="btn btn-secondary" value="Delete">
+			<#if !user.isAdmin()>
+				<input type="submit" class="btn btn-secondary" value="Delete">
+			</#if>
 		  </td>
 		</form>
 	    </tr>

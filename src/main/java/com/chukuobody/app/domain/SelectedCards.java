@@ -1,8 +1,7 @@
 package com.chukuobody.app.domain;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,23 +23,23 @@ public class SelectedCards {
 	
 	private Integer gram;
 	private String mealTime;
-	private LocalDate localDate;
+	private Timestamp date;
 	
 	public SelectedCards() {
 		
 	}
 	
-	public SelectedCards(User user, ProductCard card, Integer gram, String mealTime, LocalDate localDate) {
+	public SelectedCards(User user, ProductCard card, Integer gram, String mealTime, Timestamp date) {
 		this.user = user;
 		this.card = card;
 		this.gram = gram;
 		this.mealTime = mealTime;
-		this.localDate = localDate;
+		this.date = date;
 	}
 	
 	@Override
 	public String toString() {
-		return this.user+" "+this.card+" "+this.gram+" "+this.mealTime+" "+this.localDate;
+		return this.user+" "+this.card+" "+this.gram+" "+this.mealTime+" "+this.date;
 	}
 	
 	public Long getId() {
@@ -73,10 +72,10 @@ public class SelectedCards {
 	public void setMealTime(String mealTime) {
 		this.mealTime = mealTime;
 	}
-	public LocalDate getLocalDate() {
-		return localDate;
+	public Timestamp getLocalDate() {
+		return date;
 	}
-	public void setLocalDate(LocalDate localDate) {
-		this.localDate = localDate;
+	public void setLocalDate(Timestamp localDate) {
+		this.date = localDate;
 	}
 }
