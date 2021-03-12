@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="shortcut icon" href="#" />
 </head>
 
 <body style="   color: #055CAD;
@@ -36,6 +35,7 @@
 <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
 
 <script>
+
 $(function() {
 	  $('[data-toggle="popover"]').popover({
 	    trigger: 'focus'
@@ -67,6 +67,7 @@ myApp.controller('ControllerNewCard', function ($scope, $http) {
 			$scope.gram = recgr;
 		}
     	};
+    		
 });
 
 var myApp = angular.module('AppMenu',[]);

@@ -3,17 +3,28 @@ package com.chukuobody.app.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.chukuobody.app.domain.User;
+
 @Controller
 public class MainController {
 	@GetMapping("/")
-	public String main(@RequestParam(required = false, defaultValue = "") String name, Model model) {
-		model.addAttribute("name", name);
+	public String main(@RequestParam(required = false, defaultValue = "") String name,
+			@AuthenticationPrincipal User user,
+			Model model) {
+		
+		if(user!=null) {
+		model.addAttribute("name", user.getUsername());
+		}else {
+		model.addAttribute("name", "dear Guest");
+		}
+		
         return "main";
     }
 	

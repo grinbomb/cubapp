@@ -1,12 +1,23 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
-<div>Hello ${name} !!!</div>
+
+<#if name??>
+<h2>Hello ${name} !!!</h2>
+</#if>
+
 <div style="font-size: 30px;">
-<p class="text-center">There will be information about this service.</p>
-<p class="text-center">The service was conceived as a multifunctional and convenient calorie calculator.</p>
-<p class="text-center">I hope you will like it!</p>
+
+<p class="text-center">"Calorie calculator" with the calculation of proteins, 
+fats, carbohydrates and, to the great surprise, calories, as well as with the mechanism for 
+compiling and saving the menu (by choosing ingredients) for the required date!</p>
+
 </div>
+
+<p class="text-center">
+	<a href="/calculator" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Try now!</a>
+</p>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

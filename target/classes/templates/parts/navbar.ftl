@@ -28,9 +28,11 @@
         </ul>
         <span class="navbar-text">
       		<ul class="navbar-nav mr-auto">
-      			<li>
-   			 		<div class="navbar-text mr-3">${name}</div>
-   			 	</li>
+      			<#if user??>
+	      			<li>
+	   			 		<a class="nav-link" href="/user/profile">${name}</a>
+	   			 	</li>
+   			 	</#if>
    			 	<#if !isAuthorized>
 		            <li class="nav-item">
 		                <a class="nav-link" href="/login">Sign In</a>
