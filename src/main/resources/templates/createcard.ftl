@@ -7,17 +7,17 @@
 	<div class="form-row">
     	<div class="form-group col-md-6">
       		<label for="inputProductName">Product name</label>
-      		<input type="text" name = "productName" autocomplete="off" class="form-control ${(errorProductName??)?string('is-invalid', '')}" id="inputProductName" ng-model="product.name">
-      		<#if errorProductName??>
-	   			<div class="alert alert-danger text-center" role="alert">
- 					 ${errorProductName}
+      		<input type="text" name = "name" autocomplete="off" class="form-control ${(nameError??)?string('is-invalid', '')}" id="inputProductName" ng-model="product.name">
+      		<#if nameError??>
+	   			<div class="invalid-feedback">
+ 					 ${nameError}
 				</div>
 			</#if>
     	</div>
     	<div class="form-group col-md-6">
     	
     		<label for="inputProductCategory">Product category</label>
-	    	<select class="form-control ${(errorProductCategory??)?string('is-invalid', '')}" name="productCategory" id="inputProductCategory" ng-model="product.category">
+	    	<select class="form-control ${(productCategoryError??)?string('is-invalid', '')}" name="productCategory" id="inputProductCategory" ng-model="product.category">
 		    	<option hidden=""></option>
 		      	<option>MEATANDPOULTRY</option>
 		      	<option>FISH</option>
@@ -35,9 +35,9 @@
 		      	<option>OTHER</option>
 		    </select>
     		
-      	<#if errorProductCategory??>
-	   		<div class="alert alert-danger text-center" role="alert">
- 				 ${errorProductCategory}
+      	<#if productCategoryError??>
+	   		<div class="invalid-feedback">
+ 				 ${productCategoryError}
 			</div>
 		</#if>
 		</div>
@@ -45,37 +45,37 @@
   <div class="form-row">
     	<div class="form-group col-md-3">
       		<label for="inputCalories">Calories per gram</label>
-      		<input type="number" name = "calories" autocomplete="off" class="form-control ${(errorCalories??)?string('is-invalid', '')}" id="inputCalories" ng-model="product.calories" step="0.001">
-      		<#if errorCalories??>
-	   			<div class="alert alert-danger text-center" role="alert">
- 					 ${errorCalories}
+      		<input type="number" name = "caloriesPG" autocomplete="off" class="form-control ${(caloriesPGError??)?string('is-invalid', '')}" id="inputCalories" ng-model="product.calories" step="0.001">
+      		<#if caloriesPGError??>
+	   			<div class="invalid-feedback">
+ 					 ${caloriesPGError}
 				</div>
 			</#if>
     	</div>
     	<div class="form-group col-md-3">
       		<label for="inputProteins">Proteins per gram</label>
-      		<input type="number" name = "proteins" autocomplete="off" class="form-control ${(errorProteins??)?string('is-invalid', '')}" id="inputProteins" ng-model="product.proteins" step="0.001">
-      		<#if errorProteins??>
-	   		<div class="alert alert-danger text-center" role="alert">
- 				 ${errorProteins}
+      		<input type="number" name = "proteinsPG" autocomplete="off" class="form-control ${(proteinsPGError??)?string('is-invalid', '')}" id="inputProteins" ng-model="product.proteins" step="0.001">
+      		<#if proteinsPGError??>
+	   		<div class="invalid-feedback">
+ 				 ${proteinsPGError}
 			</div>
 		</#if>
 		</div>
 		<div class="form-group col-md-3">
       		<label for="inputFats">Fats per gram</label>
-      		<input type="number" name = "fats" autocomplete="off" class="form-control ${(errorFats??)?string('is-invalid', '')}" id="inputFats" ng-model="product.fats" step="0.001">
-      		<#if errorFats??>
-	   			<div class="alert alert-danger text-center" role="alert">
- 					 ${errorFats}
+      		<input type="number" name = "fatsPG" autocomplete="off" class="form-control ${(fatsPGError??)?string('is-invalid', '')}" id="inputFats" ng-model="product.fats" step="0.001">
+      		<#if fatsPGError??>
+	   			<div class="invalid-feedback">
+ 					 ${fatsPGError}
 				</div>
 			</#if>
     	</div>
     	<div class="form-group col-md-3">
       		<label for="inputCarbohydrates">Carbohydrates per gram</label>
-      		<input type="number" name = "carbohydrates" autocomplete="off" class="form-control ${(errorCarbohydrates??)?string('is-invalid', '')}" id="inputCarbohydrates" ng-model="product.carbohydrates" step="0.001">
-      		<#if errorCarbohydrates??>
-	   		<div class="alert alert-danger text-center" role="alert">
- 				 ${errorCarbohydrates}
+      		<input type="number" name = "carbohydratesPG" autocomplete="off" class="form-control ${(carbohydratesPGError??)?string('is-invalid', '')}" id="inputCarbohydrates" ng-model="product.carbohydrates" step="0.001">
+      		<#if carbohydratesPGError??>
+	   		<div class="invalid-feedback">
+ 				 ${carbohydratesPGError}
 			</div>
 		</#if>
 		</div>
@@ -83,19 +83,22 @@
     <div class="form-row">
     	<div class="form-group col-md-12">
 			<label for="inputImgLink">Image link <small>(beforehand you should upload your image to the image hosting, for example "<a href="https://imgbb.com">https://imgbb.com</a>")</small></label>
-      		<input type="text" name = "imgLink" autocomplete="off" class="form-control ${(errorImgLink??)?string('is-invalid', '')}" id="inputImgLink" ng-model="product.img">
-      		<#if errorImgLink??>
-	   			<div class="alert alert-danger text-center" role="alert">
- 					 ${errorImgLink}
+      		<input type="text" name = "fileName" autocomplete="off" class="form-control ${(fileNameError??)?string('is-invalid', '')}" id="inputImgLink" ng-model="product.img">
+      		<#if fileNameError??>
+	   			<div class="invalid-feedback">
+ 					 ${fileNameError}
 				</div>
 			</#if>
 		</div>
   	</div>
+ <!-- 
+  	<input id="filePath" name="filePath" type='file' base-sixty-four-input>
+  	<button type="button" class="btn btn-primary" ng-model="testApiButton" ng-click="sendHttpToImgBB()">TEST</button> --> <!-- TRYING TO CONFIGURATE API -->
   	<button type="submit" class="btn btn-primary">Create</button>
   	
   	<div class="row d-flex justify-content-center align-items-center m-2" style="background-color:#DCECFC;">
 		<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
-  		<img class="card-img-top" src={{product.img}} alt="EXAMPLE IMG" style="background-color: white;">
+  		<img class="card-img-top" ng-src={{product.img}} alt="EXAMPLE IMG" style="background-color: white;">
   			<div class="card-body" style="background-color: white;">
     			<h5 class="card-title">{{product.name}}</h5>
     			<div class="card-text" style="font-size:16px;">

@@ -2,13 +2,13 @@ create sequence hibernate_sequence start 1 increment 1;
 
 create table product_card (
 		id int8 not null, 
-		caloriespg float8 not null, 
-		carbohydratespg float8 not null, 
-		fatspg float8 not null, 
+		caloriespg float4 not null, 
+		carbohydratespg float4 not null, 
+		fatspg float4 not null, 
 		file_name varchar(255) not null, 
 		name varchar(255) not null, 
 		product_category varchar(255) not null, 
-		proteinspg float8 not null, 
+		proteinspg float4 not null, 
 		primary key (id)
 	);
 

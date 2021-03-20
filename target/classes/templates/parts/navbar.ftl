@@ -28,7 +28,7 @@
         </ul>
         <span class="navbar-text">
       		<ul class="navbar-nav mr-auto">
-      			<#if user??>
+      			<#if isAuthorized>
 	      			<li>
 	   			 		<a class="nav-link" href="/user/profile">${name}</a>
 	   			 	</li>

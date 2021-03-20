@@ -48,7 +48,7 @@ public class MenuController {
 	
 	@PostMapping("/savemenu")
 	public String saveMenu(@AuthenticationPrincipal User user,
-			@RequestParam String[] productCards,
+			@RequestParam(required = false) String[] productCards,
 			@RequestParam String selectedDate,
 			Model model) throws ParseException {
 		
@@ -56,6 +56,9 @@ public class MenuController {
 		Date parsedDate = dateFormat.parse(selectedDate);
 		Timestamp docDate = new Timestamp(parsedDate.getTime());
 		
+		if(productCards==null){
+			return "redirect:/selectedmenu";
+		}
 		List<SelectedCards> selectedCards = menuRepo.findByUserIdAndDate(user.getId(), docDate);
 		if(!selectedCards.isEmpty()) {
 			return "redirect:/selectedmenu";

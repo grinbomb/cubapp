@@ -4,6 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class ProductCard {
@@ -11,20 +17,42 @@ public class ProductCard {
 @GeneratedValue(strategy=GenerationType.AUTO)
 private Long id;
 
+@NotBlank(message = "Please enter the name")
+@Length(max = 255, message = "Name too long (more than 2kB)")
 private String name;
+
+@NotBlank(message = "Please enter the product category")
 private String productCategory;
-private Double caloriesPG;
-private Double proteinsPG;
-private Double fatsPG;
-private Double carbohydratesPG;
+
+@NotNull(message = "Please enter the number of calories per gram")
+@Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
+@Positive(message = "The number must be positive")
+private Float caloriesPG;
+
+@NotNull(message = "Please enter the number of proteins per gram")
+@Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
+@Positive(message = "The number must be positive")
+private Float proteinsPG;
+
+@NotNull(message = "Please enter the number of fats per gram")
+@Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
+@Positive(message = "The number must be positive")
+private Float fatsPG;
+
+@NotNull(message = "Please enter the number of carbohydrates per gram")
+@Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
+@Positive(message = "The number must be positive")
+private Float carbohydratesPG;
+
+@NotBlank(message = "Please enter the link to picture")
 private String fileName;
 
 public ProductCard() {
 	
 }
 
-public ProductCard(String name, String productCategory, Double caloriesPG, Double proteinsPG, Double fatsPG,
-		Double carbohydratesPG, String fileName) {
+public ProductCard(String name, String productCategory, Float caloriesPG, Float proteinsPG, Float fatsPG,
+		Float carbohydratesPG, String fileName) {
 	this.name = name;
 	this.productCategory = productCategory;
 	this.caloriesPG = caloriesPG;
@@ -52,28 +80,28 @@ public String getProductCategory() {
 public void setProductCategory(String productCategory) {
 	this.productCategory = productCategory;
 }
-public Double getCaloriesPG() {
+public Float getCaloriesPG() {
 	return caloriesPG;
 }
-public void setCaloriesPG(Double caloriesPG) {
+public void setCaloriesPG(Float caloriesPG) {
 	this.caloriesPG = caloriesPG;
 }
-public Double getProteinsPG() {
+public Float getProteinsPG() {
 	return proteinsPG;
 }
-public void setProteinsPG(Double proteinsPG) {
+public void setProteinsPG(Float proteinsPG) {
 	this.proteinsPG = proteinsPG;
 }
-public Double getFatsPG() {
+public Float getFatsPG() {
 	return fatsPG;
 }
-public void setFatsPG(Double fatsPG) {
+public void setFatsPG(Float fatsPG) {
 	this.fatsPG = fatsPG;
 }
-public Double getCarbohydratesPG() {
+public Float getCarbohydratesPG() {
 	return carbohydratesPG;
 }
-public void setCarbohydratesPG(Double carbohydratesPG) {
+public void setCarbohydratesPG(Float carbohydratesPG) {
 	this.carbohydratesPG = carbohydratesPG;
 }
 public String getFileName() {

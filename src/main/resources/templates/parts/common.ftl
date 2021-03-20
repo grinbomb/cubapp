@@ -35,6 +35,21 @@
 <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
 
 <script>
+function getCsrfHeader() {
+	var csrfToken = $("input[name='_csrf']").val();
+
+	var headers = {}; 
+	headers["X-CSRF-TOKEN"] = csrfToken;
+	headers["_csrf"] = csrfToken;
+	return headers;
+	};
+	
+	function deleteHeadersForApi() {
+
+		var headers = {}; 
+		headers["Content-Type"] = "multipart/form-data;";
+		return headers;
+		};
 
 $(function() {
 	  $('[data-toggle="popover"]').popover({
@@ -44,6 +59,9 @@ $(function() {
 
 var myApp = angular.module('AppNewCard',[]);
 myApp.controller('ControllerNewCard', function ($scope, $http) {
+	
+	$scope.textBase64Img="";
+	
 	 $scope.product={
 			name:"Product name",
 			calories:0.001,
@@ -58,16 +76,36 @@ myApp.controller('ControllerNewCard', function ($scope, $http) {
 	$scope.gram = 1;
 	
 	$scope.recountTestCard = function(recgr){
-		
-		if (recgr > 9999999) {
-			$scope.gram = 9999999;
-		}else if(recgr < 1) {
-			$scope.gram = 1;
-		}else{
-			$scope.gram = recgr;
-		}
+				if (recgr > 9999999) {
+					$scope.gram = 9999999;
+				}else if(recgr < 1) {
+					$scope.gram = 1;
+				}else{
+					$scope.gram = recgr;
+				}
     	};
+/*
+    	$scope.sendHttpToImgBB = function(){								//***TRYING TO CONFIGURATE API***
+    		var files = document.getElementById('filePath').files;
+    		var reader = new FileReader();
+    		reader.readAsDataURL(files[0]);
+    		reader.onload = function() {
+    			console.log(reader.result);
     		
+    			var file = document.getElementById('filePath');
+				var form = new FormData();
+				form.append("image", file.files[0])
+				
+				console.log(file.files[0]);
+    		$http.post('https://api.imgbb.com/1/upload?key=369eefb593309d26c901ff8a3b6a5c83&image='+reader.result,{headers:deleteHeadersForApi()}).then(
+    				function(response){
+    					console.log(response);
+    	     		},
+    				function(response){
+    					console.log(response);
+    				});
+    		};
+    	}*/
 });
 
 var myApp = angular.module('AppMenu',[]);
@@ -116,15 +154,6 @@ $scope.change = function(eatid, eatcategory){
 				console.log(response);
 			});
 	};
-	
-function getCsrfHeader() {
-		var csrfToken = $("input[name='_csrf']").val();
-
-		var headers = {}; 
-		headers["X-CSRF-TOKEN"] = csrfToken;
-		headers["_csrf"] = csrfToken;
-		return headers;
-		}; 
 		
 $scope.recount = function(recid, recgr, mealtime){
 	if(mealtime == "breakfast"){
