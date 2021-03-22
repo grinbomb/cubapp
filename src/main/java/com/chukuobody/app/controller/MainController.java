@@ -36,6 +36,11 @@ public class MainController {
 		model.addAttribute("checkedMaleBox", "");
 		model.addAttribute("checkedFemaleBox", "");
 		
+		model.addAttribute("activenumOfMealsThree", "");
+		model.addAttribute("activenumOfMealsFive", "");
+		model.addAttribute("checkednumOfMealsThree", "");
+		model.addAttribute("checkednumOfMealsFive", "");
+		
 		model.addAttribute("selectedMin", "");
 		model.addAttribute("selectedLow", "");
 		model.addAttribute("selectedMedium", "");
@@ -51,6 +56,7 @@ public class MainController {
 			@RequestParam String height,
 			@RequestParam String age,
 			@RequestParam String intensity,
+			@RequestParam(defaultValue = "") String numOfMeals,
 			@RequestParam(defaultValue = "") String sex,
 			Model model) 
 	{
@@ -71,6 +77,11 @@ public class MainController {
 		model.addAttribute("activeFemaleBox", "");
 		model.addAttribute("checkedMaleBox", "");
 		model.addAttribute("checkedFemaleBox", "");
+		
+		model.addAttribute("activenumOfMealsThree", "");
+		model.addAttribute("activenumOfMealsFive", "");
+		model.addAttribute("checkednumOfMealsThree", "");
+		model.addAttribute("checkednumOfMealsFive", "");
 		
 		int genderConst = 0;
 		double intensityConst = 0;
@@ -134,15 +145,28 @@ public class MainController {
 				break;
 			}
 		}
-		if(sex.isEmpty())
+		if(sex.isEmpty()) {
 			errorList.put("errorValueGender", "Gender must not be empty.");
-		else {
+			}else {
 			if(sex.equals("male")) {
 				model.addAttribute("activeMaleBox", "active");
 				model.addAttribute("checkedMaleBox", "checked");
 			}else if(sex.equals("female")) {
 				model.addAttribute("activeFemaleBox", "active");
 				model.addAttribute("checkedFemaleBox", "checked");
+			}
+				
+		}
+		
+		if(numOfMeals.isEmpty()) {
+			errorList.put("errorNumOfMeals", "Number of meals must not be empty.");
+			}else {
+			if(numOfMeals.equals("three")) {
+				model.addAttribute("activenumOfMealsThree", "active");
+				model.addAttribute("checkednumOfMealsThree", "checked");
+			}else if(numOfMeals.equals("five")) {
+				model.addAttribute("activenumOfMealsFive", "active");
+				model.addAttribute("checkednumOfMealsFive", "checked");
 			}
 				
 		}
