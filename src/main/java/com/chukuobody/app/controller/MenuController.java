@@ -3,6 +3,7 @@ package com.chukuobody.app.controller;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,22 +30,111 @@ public class MenuController {
 	private MenuRepo menuRepo;
 	
 	@GetMapping("/selectedmenu")
-	public String main(@AuthenticationPrincipal User user,
-			Model model) throws ParseException {
+	public String main(
+			@AuthenticationPrincipal User user,
+			Model model
+			) throws ParseException {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date parsedDate = dateFormat.parse(dateFormat.format(new Date()));
 		Timestamp docDate = new Timestamp(parsedDate.getTime());
 		
-		System.out.println(parsedDate);
+		List<SelectedCards> selectedCards = menuRepo.findByUserIdAndDate(user.getId(), docDate);
+		
+		List<SelectedCards> 
+				breakfastCards = new ArrayList(),
+				brunchCards = new ArrayList(),
+				lunchCards = new ArrayList(),
+				linnerCards = new ArrayList(),
+				dinnerCards = new ArrayList();
+		
+		for (SelectedCards card : selectedCards) {
+			
+			switch (card.getMealTime()) {
+			case "breakfast":
+				breakfastCards.add(card);
+				break;
+			case "brunch":
+				brunchCards.add(card);
+				break;
+			case "lunch":
+				lunchCards.add(card);
+				break;
+			case "linner":
+				linnerCards.add(card);
+				break;
+			case "dinner":
+				dinnerCards.add(card);
+				break;
+			}
+		}
+		
+		if(!breakfastCards.isEmpty()) model.addAttribute("breakfastCards", breakfastCards);
+		if(!brunchCards.isEmpty()) model.addAttribute("brunchCards", brunchCards);
+		if(!lunchCards.isEmpty()) model.addAttribute("lunchCards", lunchCards);
+		if(!linnerCards.isEmpty()) model.addAttribute("linnerCards", linnerCards);
+		if(!dinnerCards.isEmpty()) model.addAttribute("dinnerCards", dinnerCards);
+		
+		String formatted = dateFormat.format(docDate);
+		
+		model.addAttribute("selectedDate", formatted);
+		
+        return "selectedmenu";
+    }
+	
+	@PostMapping("/selectedmenu")
+	public String checkDate(
+			@AuthenticationPrincipal User user,
+			@RequestParam String selectedDate,
+			Model model
+			) throws ParseException {
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date parsedDate = dateFormat.parse(selectedDate);
+		Timestamp docDate = new Timestamp(parsedDate.getTime());
 		
 		List<SelectedCards> selectedCards = menuRepo.findByUserIdAndDate(user.getId(), docDate);
 		
-		if(!selectedCards.isEmpty()) {
-		model.addAttribute("cards", selectedCards);
+		List<SelectedCards> 
+		breakfastCards = new ArrayList(),
+		brunchCards = new ArrayList(),
+		lunchCards = new ArrayList(),
+		linnerCards = new ArrayList(),
+		dinnerCards = new ArrayList();
+
+		for (SelectedCards card : selectedCards) {
+			
+			switch (card.getMealTime()) {
+			case "breakfast":
+				breakfastCards.add(card);
+				break;
+			case "brunch":
+				brunchCards.add(card);
+				break;
+			case "lunch":
+				lunchCards.add(card);
+				break;
+			case "linner":
+				linnerCards.add(card);
+				break;
+			case "dinner":
+				dinnerCards.add(card);
+				break;
+			}
 		}
-        return "selectedmenu";
-    }
+		
+		if(!breakfastCards.isEmpty()) model.addAttribute("breakfastCards", breakfastCards);
+		if(!brunchCards.isEmpty()) model.addAttribute("brunchCards", brunchCards);
+		if(!lunchCards.isEmpty()) model.addAttribute("lunchCards", lunchCards);
+		if(!linnerCards.isEmpty()) model.addAttribute("linnerCards", linnerCards);
+		if(!dinnerCards.isEmpty()) model.addAttribute("dinnerCards", dinnerCards);
+		
+		String formatted = dateFormat.format(docDate);
+		
+		model.addAttribute("selectedDate", formatted);
+		
+		return "selectedmenu";
+	}
 	
 	@PostMapping("/savemenu")
 	public String saveMenu(@AuthenticationPrincipal User user,
@@ -59,7 +149,9 @@ public class MenuController {
 		if(productCards==null){
 			return "redirect:/selectedmenu";
 		}
+		
 		List<SelectedCards> selectedCards = menuRepo.findByUserIdAndDate(user.getId(), docDate);
+		
 		if(!selectedCards.isEmpty()) {
 			return "redirect:/selectedmenu";
 		}

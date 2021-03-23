@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -26,22 +26,22 @@ private String productCategory;
 
 @NotNull(message = "Please enter the number of calories per gram")
 @Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
-@Positive(message = "The number must be positive")
+@PositiveOrZero(message = "The number must be positive")
 private Float caloriesPG;
 
 @NotNull(message = "Please enter the number of proteins per gram")
 @Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
-@Positive(message = "The number must be positive")
+@PositiveOrZero(message = "The number must be positive")
 private Float proteinsPG;
 
 @NotNull(message = "Please enter the number of fats per gram")
 @Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
-@Positive(message = "The number must be positive")
+@PositiveOrZero(message = "The number must be positive")
 private Float fatsPG;
 
 @NotNull(message = "Please enter the number of carbohydrates per gram")
 @Digits(fraction = 3, integer = 3, message = "There must be no more than 3 decimal places and before the decimal point")
-@Positive(message = "The number must be positive")
+@PositiveOrZero(message = "The number must be positive")
 private Float carbohydratesPG;
 
 @NotBlank(message = "Please enter the link to picture")

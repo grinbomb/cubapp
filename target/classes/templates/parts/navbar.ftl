@@ -45,6 +45,9 @@
 	            	</li>
 	            </#if>
 	            <#if isAuthorized>
+	            	<li class="nav-item">
+		                <a class="btn btn-outline-dark mx-1" href="/user/profile" role="button">Settings</a>
+	            	</li>
 	   			 	<li class="nav-item">
 					    <form action="/logout" method="post">
 					        <input type="hidden" name="_csrf" value="${_csrf.token}" />
