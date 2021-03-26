@@ -86,15 +86,17 @@ public class MenuController {
 	public String checkDate(
 			@AuthenticationPrincipal User user,
 			@RequestParam String selectedDate,
+			@RequestParam String action,
 			Model model
 			) throws ParseException {
-		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Date parsedDate = dateFormat.parse(selectedDate);
 		Timestamp docDate = new Timestamp(parsedDate.getTime());
 		
 		List<SelectedCards> selectedCards = menuRepo.findByUserIdAndDate(user.getId(), docDate);
 		
+		if(action.equals("check")) {
+	
 		List<SelectedCards> 
 		breakfastCards = new ArrayList(),
 		brunchCards = new ArrayList(),
@@ -129,10 +131,16 @@ public class MenuController {
 		if(!linnerCards.isEmpty()) model.addAttribute("linnerCards", linnerCards);
 		if(!dinnerCards.isEmpty()) model.addAttribute("dinnerCards", dinnerCards);
 		
+		}
+		else if(action.equals("delete"))
+		{
+			for (SelectedCards card : selectedCards) {
+				menuRepo.deleteById(card.getId());
+			}
+		}
 		String formatted = dateFormat.format(docDate);
 		
 		model.addAttribute("selectedDate", formatted);
-		
 		return "selectedmenu";
 	}
 	

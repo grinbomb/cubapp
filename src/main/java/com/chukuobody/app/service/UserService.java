@@ -127,7 +127,7 @@ public class UserService implements UserDetailsService {
 		return userRepo.findById(id);
 	}
 
-	public void updateProfile(Long id, String password, String email) {
+	public void updateProfile(Long id, String password, String password2, String email) {
 		User user = userRepo.findById(id).get();
 		String userEmail = user.getEmail();
 		String userPassword = user.getPassword();
@@ -144,7 +144,9 @@ public class UserService implements UserDetailsService {
         }
 
         if (!StringUtils.isEmpty(password)) {
+        	if(password.equals(password2)) {
         	user.setPassword(passwordEncoder.encode(password));
+        	}
         }
         
         userRepo.save(user);

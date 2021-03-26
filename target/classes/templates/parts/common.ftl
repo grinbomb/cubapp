@@ -35,6 +35,13 @@
 <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
 
 <script>
+
+function showButton() {
+	document.getElementById("deleteButton").style.display='none';
+
+	document.getElementById("deleteText").style.display='block';
+}
+
 function getCsrfHeader() {
 	var csrfToken = $("input[name='_csrf']").val();
 

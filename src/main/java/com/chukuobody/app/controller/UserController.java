@@ -83,11 +83,12 @@ public class UserController {
     public String updateProfile(
             @AuthenticationPrincipal User user,
             @RequestParam String password,
+            @RequestParam String password2,
             @RequestParam String email
     ) {
     	
     	
-    	userService.updateProfile(user.getId(), password, email);
+    	userService.updateProfile(user.getId(), password, password2, email);
     	
         return "redirect:/user/profile";
     }

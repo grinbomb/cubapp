@@ -1,15 +1,56 @@
 <#import "parts/common.ftl" as c>
 
 <@c.page>
+<div class="row">
 <form class="form-inline" method="post" enctype="multipart/form-data">
   <div class="form-group mx-2">
     	<label for="inputDate">Select date:</label>
-    	<input type="date" class="form-control" name="selectedDate" value="<#if selectedDate??>${selectedDate}</#if>">
+    	<input type="date" class="form-control" name="selectedDate" value="<#if selectedDate??>${selectedDate}</#if>" onchange="showButton()">
   </div>
-  <button type="submit" class="btn btn-primary">Check date</button>
+  <button type="submit" class="btn btn-primary" name="action" value="check">Check date</button>
+  
+  	<#if breakfastCards??||brunchCards??||lunchCards??||linnerCards??||dinnerCards??>
+		<div class="mx-2">
+			<button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteModal">Delete menu</button>
+		</div>
+		<div>
+			<p id="deleteText" style="display: none; color:red;">You have changed the date! Check it out before deleting the menu!</p>
+		</div>
+	</#if>
+  
+  
+  
+  
+  
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the menu for the date </p>
+        <p>${selectedDate}?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-danger" name="action" value="delete">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+  
+  
+  
   <input type="hidden" name="_csrf" value="${_csrf.token}" />
 </form>
 
+</div>
 <#if breakfastCards??>
 <h2 class="text-center">Breakfast</h2>
 <div class="row">
@@ -176,10 +217,10 @@
 </#if>
 
 <#if !breakfastCards??&&!brunchCards??&&!lunchCards??&&!linnerCards??&&!dinnerCards??>
-<div class="d-flex justify-content-center align-items-center m-2">
-<h3>You haven't made a menu for yourself at <#if selectedDate??>${selectedDate}</#if>!</h3>
+<div class="d-flex justify-content-center align-items-center m-3">
+<h3>You haven't made a menu for yourself at <#if selectedDate??><b>${selectedDate}</b></#if>!</h3>
 </div>
-<div class="d-flex justify-content-center align-items-center m-2">
+<div class="d-flex justify-content-center align-items-center m-3">
 <a href="/calculator" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Do it now</a>
 </div>
 </#if>
