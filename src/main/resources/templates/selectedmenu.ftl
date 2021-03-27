@@ -18,10 +18,6 @@
 		</div>
 	</#if>
   
-  
-  
-  
-  
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -42,15 +38,32 @@
     </div>
   </div>
 </div>
-  
-  
-  
-  
-  
   <input type="hidden" name="_csrf" value="${_csrf.token}" />
 </form>
 
 </div>
+
+  <#if sumCalories??&&sumFats??&&sumCalories??&&sumCalories??>
+        <table class="table table-striped mt-2">
+  			<thead>
+    			<tr>
+			      <th class="table-warning" scope="col">Proteins</th>
+			      <th class="table-warning" scope="col">Fats</th>
+			      <th class="table-warning" scope="col">Carbohydrates</th>
+			      <th class="table-warning" scope="col">Calories</th>
+ 			   </tr>
+		 	</thead>
+  			<tbody>
+			    <tr>
+			      <td class="table-warning">${sumProteins} gm.</td>
+			      <td class="table-warning">${sumFats} gm.</td>
+			      <td class="table-warning">${sumCarbohydrates} gm.</td>
+			      <td class="table-warning">${sumCalories}</td>
+			    </tr>
+			 </tbody>
+		</table>
+  </#if>
+
 <#if breakfastCards??>
 <h2 class="text-center">Breakfast</h2>
 <div class="row">
