@@ -88,6 +88,25 @@
 		</#if>
 	</div>
   </div>
+  
+  <div class="form-row">
+  <div class="form-group col-md-4">
+  		<label>Select a calculation option</label>
+    	<select class="form-control ${(errorCalculationOption??)?string('is-invalid', '')}" name="calculationOption">
+    	<option hidden=""></option>
+      	<option value="fastloss" ${selectedFastLossOption}>Fast weight loss</option>
+      	<option value="slowloss" ${selectedSlowLossOption}>Slow weight loss</option>
+      	<option value="normal" ${selectedNormalOption}>Maintaining a normal weight</option>
+      	<option value="muscle" ${selectedMuscleOption}>Muscle gain</option>
+    </select>
+    <#if errorCalculationOption??>
+	   		<div class="invalid-feedback">
+ 				 ${errorCalculationOption}
+			</div>
+		</#if>
+  </div>
+  </div>
+  
   <input type="hidden" name="_csrf" value="${_csrf.token}" />
   <button type="submit" class="btn btn-primary">Calculate</button>
   
@@ -519,14 +538,14 @@
     </div> <!-- Menu selections area for DINNER IS OVER-->
   </div> <!-- Pop-up area for DINNER menu -->
   <#if isAuthorized> 
-	  <div class="form-group m-1">
+	  <div class="form-row m-1 p-1">
 	    	<label for="inputDate">Select date:</label>
-	    	<input type="date" class="form-control" name="selectedDate" ng-model="selectedDate" ng-change="checkMenuDate(selectedDate)" ng-init="selectedDate = date | date: 'yyyy-MM-dd'; checkMenuDate(selectedDate)">
-	    	<div class="alert alert-danger" role="alert" ng-if="isNotFreeDate">
-	    		<h3>Attention!</h3> You already have a menu selected for that date. If you want to change it: go to the section "Your menu", select this date and make the necessary changes!
-			</div>
+	    	<input id = "inputDate" type="date" class="form-control col-md-4" name="selectedDate" ng-model="selectedDate" ng-change="checkMenuDate(selectedDate)" ng-init="selectedDate = date | date: 'yyyy-MM-dd'; checkMenuDate(selectedDate)">
+	    	<button type="submit" class="btn btn-primary mx-2" ng-if="!isNotFreeDate">Save menu</button>
 	  </div>
-	  	<button type="submit" class="btn btn-primary m-1" ng-if="!isNotFreeDate">Save menu</button>
+	  	<div class="alert alert-danger m-2" role="alert" ng-if="isNotFreeDate">
+	    		<h3>Attention!</h3> You already have a menu for this date! Go to the "Your Menu" tab to view or delete it!
+		</div>
   <#else>
 	 	<button type="button" class="btn btn-secondary m-1" data-container="body" data-toggle="popover" data-placement="right" data-content="To save the menu you need to log in!">
  			Save menu

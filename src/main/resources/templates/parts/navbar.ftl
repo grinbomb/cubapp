@@ -46,12 +46,12 @@
 	            </#if>
 	            <#if isAuthorized>
 	            	<li class="nav-item">
-		                <a class="btn btn-outline-dark mx-1" href="/user/profile" role="button">Settings</a>
+		                <a class="btn btn-outline-dark m-1" href="/user/profile" role="button">Settings</a>
 	            	</li>
 	   			 	<li class="nav-item">
 					    <form action="/logout" method="post">
 					        <input type="hidden" name="_csrf" value="${_csrf.token}" />
-					        <button type="submit" class="btn btn-secondary">Sign Out</button>
+					        <button type="submit" class="btn btn-secondary m-1">Sign Out</button>
 					    </form>
 	   			 	</li>
    			 	</#if>

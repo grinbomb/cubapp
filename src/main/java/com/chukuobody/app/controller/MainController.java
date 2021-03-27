@@ -47,6 +47,11 @@ public class MainController {
 		model.addAttribute("selectedHard", "");
 		model.addAttribute("selectedMax", "");
 		
+		model.addAttribute("selectedNormalOption", "");
+		model.addAttribute("selectedMuscleOption", "");
+		model.addAttribute("selectedFastLossOption", "");
+		model.addAttribute("selectedSlowLossOption", "");
+		
         return "calculator";
     }
 	
@@ -56,6 +61,7 @@ public class MainController {
 			@RequestParam String height,
 			@RequestParam String age,
 			@RequestParam String intensity,
+			@RequestParam String calculationOption,
 			@RequestParam(defaultValue = "") String numOfMeals,
 			@RequestParam(defaultValue = "") String sex,
 			Model model) 
@@ -73,6 +79,11 @@ public class MainController {
 		model.addAttribute("selectedHard", "");
 		model.addAttribute("selectedMax", "");
 		
+		model.addAttribute("selectedNormalOption", "");
+		model.addAttribute("selectedMuscleOption", "");
+		model.addAttribute("selectedFastLossOption", "");
+		model.addAttribute("selectedSlowLossOption", "");
+		
 		model.addAttribute("activeMaleBox", "");
 		model.addAttribute("activeFemaleBox", "");
 		model.addAttribute("checkedMaleBox", "");
@@ -84,7 +95,11 @@ public class MainController {
 		model.addAttribute("checkednumOfMealsFive", "");
 		
 		int genderConst = 0;
-		double intensityConst = 0;
+		double intensityConst = 0,
+				optionProteinsConst = 0,
+				optionFatsConst = 0,
+				optionCarbohydratesConst = 0,
+				additionalCalories = 0;
 		
 		int weightInt,
 			heightInt,
@@ -116,14 +131,17 @@ public class MainController {
 			errorList.put("errorValueWeight", "Weight must not be empty.");
 		else if(weightInt>1000||weightInt<=0)
 			errorList.put("errorValueWeight", "Weight must not be less than or equal to 0 and cannot exceed 1000.");
+		
 		if(height.isEmpty())
 			errorList.put("errorValueHeight", "Height must not be empty.");
 		else if(heightInt>400||heightInt<=0)
 			errorList.put("errorValueHeight", "Height must not be less than or equal to 0 and cannot exceed 400.");
+		
 		if(age.isEmpty())
 			errorList.put("errorValueAge", "Age must not be empty.");
 		else if(ageInt<13||ageInt>80)
 			errorList.put("errorValueAge", "Age must not be less than 13 and cannot exceed 80.");
+		
 		if(intensity.isEmpty())
 			errorList.put("errorValueIntensity", "Intensity must not be empty.");
 		else {
@@ -145,6 +163,26 @@ public class MainController {
 				break;
 			}
 		}
+		
+		if(calculationOption.isEmpty())
+			errorList.put("errorCalculationOption", "Calculation option must not be empty.");
+		else {
+			switch (calculationOption) {
+			case "normal":
+				model.addAttribute("selectedNormalOption", "selected");
+				break;
+			case "muscle":
+				model.addAttribute("selectedMuscleOption", "selected");
+				break;
+			case "fastloss":
+				model.addAttribute("selectedFastLossOption", "selected");
+				break;
+			case "slowloss":
+				model.addAttribute("selectedSlowLossOption", "selected");
+				break;
+			}
+		}
+		
 		if(sex.isEmpty()) {
 			errorList.put("errorValueGender", "Gender must not be empty.");
 			}else {
@@ -170,7 +208,6 @@ public class MainController {
 			}
 				
 		}
-		
 		
 		if(!errorList.isEmpty()) {
 			for(Map.Entry<String, String> entry : errorList.entrySet()) {
@@ -204,10 +241,36 @@ public class MainController {
 			break;
 		}
 		
-		double calories = intensityConst * (10*weightInt + 6.25*heightInt - 5*ageInt + genderConst),
-				proteins = (calories*0.30)/4.1,
-				fats = (calories*0.22)/9.29,
-				carbohydrates = (calories*0.48)/4.1;
+		switch (calculationOption) {
+		case "normal":
+			optionProteinsConst = 0.30;
+			optionFatsConst = 0.22;
+			optionCarbohydratesConst = 0.48;
+			break;
+		case "muscle":
+			optionProteinsConst = 0.30;
+			optionFatsConst = 0.10;
+			optionCarbohydratesConst = 0.60;
+			additionalCalories = 500;
+			break;
+		case "fastloss":
+			optionProteinsConst = 0.30;
+			optionFatsConst = 0.22;
+			optionCarbohydratesConst = 0.48;
+			additionalCalories = -500;
+			break;
+		case "slowloss":
+			optionProteinsConst = 0.30;
+			optionFatsConst = 0.22;
+			optionCarbohydratesConst = 0.48;
+			additionalCalories = -250;
+			break;
+		}
+		
+		double calories = intensityConst * (10*weightInt + 6.25*heightInt - 5*ageInt + genderConst) + additionalCalories,
+				proteins = (calories*optionProteinsConst)/4.1,
+				fats = (calories*optionFatsConst)/9.29,
+				carbohydrates = (calories*optionCarbohydratesConst)/4.1;
 		
 		int caloriesInt = (int)Math.round(calories);
 		
