@@ -11,10 +11,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
-<body style="   color: #055CAD;
-				background-color:#67B9F7;
+<body style="   color: #343A40;
+				background-color:#78BF83;
     			background-size: cover; 
     			height: 100%;
     			font-family: 'Ropa Sans', sans-serif;
@@ -23,7 +24,7 @@
 
 <#include "navbar.ftl">
 
-<div class="container pt-5" style="background-color:#B8DAFC; background-size: cover; min-height: 100%; box-sizing: border-box; ">
+<div class="container pt-5" style="background-color:#EBEFF2; background-size: cover; min-height: 100%; box-sizing: border-box; ">
 <#nested>
 </div>
 <!-- Optional JavaScript -->
@@ -33,7 +34,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
 <script src="https://code.angularjs.org/1.8.2/angular-route.js"></script>
-
 <script>
 
 function showButton() {

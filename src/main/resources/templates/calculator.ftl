@@ -108,7 +108,7 @@
   </div>
   
   <input type="hidden" name="_csrf" value="${_csrf.token}" />
-  <button type="submit" class="btn btn-primary">Calculate</button>
+  <button type="submit" class="btn btn-success">Calculate</button>
   
 </form>
 
@@ -140,11 +140,11 @@
 <form method="post" enctype="multipart/form-data" action="/savemenu">
 <div id="accordion" ng-app="AppMenu" ng-controller = "AppController"> <!-- NG-CONTROLLER STARTS HERE -->
 
-  <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for BREAKFAST menu -->
+  <div class="card" style="background-color:#DFE3E6; "> <!-- Pop-up area for BREAKFAST menu -->
     <div class="card-header text-center" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" type="button">
-          Breakfast 
+          <a style="color: #343A40;">Breakfast </a>
         </button>
       </h5>
     </div>
@@ -222,11 +222,11 @@
   </div> <!-- Pop-up area for BREAKFAST menu IS OVER -->
   
   <#if activenumOfMealsFive=='active'>
-    <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for BRUNCH menu -->
+    <div class="card" style="background-color:#DFE3E6;"> <!-- Pop-up area for BRUNCH menu -->
     <div class="card-header text-center" id="headingOneAndHalf">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOneAndHalf" aria-expanded="false" aria-controls="collapseOneAndHalf" type="button">
-          Brunch 
+          <a style="color: #343A40;">Brunch </a>
         </button>
       </h5>
     </div>
@@ -299,11 +299,11 @@
   </div> <!-- Pop-up area for BRUNCH menu IS OVER -->
   </#if>
   
-  <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for LUNCH menu -->
+  <div class="card" style="background-color:#DFE3E6;"> <!-- Pop-up area for LUNCH menu -->
     <div class="card-header text-center" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" type="button">
-          Lunch
+          <a style="color: #343A40;">Lunch</a>
         </button>
       </h5>
     </div>
@@ -380,11 +380,11 @@
   </div> <!-- Pop-up area for LUNCH menu IS OVER-->
   
   <#if activenumOfMealsFive=='active'>
-    <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for LINNER menu -->
+    <div class="card" style="background-color:#DFE3E6;"> <!-- Pop-up area for LINNER menu -->
     <div class="card-header text-center" id="headingTwoAndHalf">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwoAndHalf" aria-expanded="false" aria-controls="collapseTwoAndHalf" type="button">
-          Linner
+          <a style="color: #343A40;">Linner </a>
         </button>
       </h5>
     </div>
@@ -457,11 +457,11 @@
   </div> <!-- Pop-up area for LINNER menu IS OVER-->
   </#if>
   
-  <div class="card" style="background-color:#DCECFC;"> <!-- Pop-up area for DINNER menu -->
+  <div class="card" style="background-color:#DFE3E6;"> <!-- Pop-up area for DINNER menu -->
     <div class="card-header text-center" id="headingThree">
       <h5 class="mb-0">
         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" type="button">
-          Dinner
+          <a style="color: #343A40;">Dinner</a>
         </button>
       </h5>
     </div>

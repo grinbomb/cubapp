@@ -15,7 +15,7 @@ compiling and saving the menu (by choosing ingredients) for the required date!</
 </div>
 
 <p class="text-center">
-	<a href="/calculator" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Try now!</a>
+	<a href="/calculator" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Try now!</a>
 </p>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -26,13 +26,13 @@ compiling and saving the menu (by choosing ingredients) for the required date!</
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="http://ibb.co.com/images/firsta72a48ea1ea727ee.png" alt="First">
+      <img class="d-block w-100" src="https://i.ibb.co/Bg0j4pd/eda2.jpg" alt="First">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="http://ibb.co.com/images/secondb456581d1397ac92.png" alt="Second">
+      <img class="d-block w-100" src="https://i.ibb.co/DKhFdQ5/food.jpg" alt="Second">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="http://ibb.co.com/images/thirdc270a46b06cc4c7f.png" alt="Third">
+      <img class="d-block w-100" src="https://i.ibb.co/gR8NB1Z/eda.jpg" alt="Third">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

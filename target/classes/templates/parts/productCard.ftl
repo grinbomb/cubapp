@@ -2,7 +2,7 @@
   <div class="collapse" id="${idcss}">
 		<h5>Choose what you like from the ${name} category:</h5>
 		<div class="row">
-			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;" ng-repeat="item in cards[${indexfromarray}]">
+			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #022601;" ng-repeat="item in cards[${indexfromarray}]">
   			<img class="card-img-top" ng-src={{item.fileName}} alt="Card image cap" style="background-color: white;">
   				<div class="card-body" style="background-color: white;">
     				<h5 class="card-title">{{item.name}}</h5>

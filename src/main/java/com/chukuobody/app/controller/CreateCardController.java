@@ -1,6 +1,7 @@
 package com.chukuobody.app.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,10 +28,22 @@ public class CreateCardController {
 	private CardRepo cardRepo;
 	
 	@GetMapping
-	public String create() {
+	public String showCards(Model model) {
+		
+		List<ProductCard> allCards = cardRepo.findAll();
+		
+		model.addAttribute("cards", allCards);
 		
         return "createcard";
     }
+	
+	@PostMapping("/delete/{id}")
+	public String deleteCard(@PathVariable("id") Long id) {
+		
+		cardRepo.deleteById(id);
+		
+		return "redirect:/createcard";
+	}
 	
 	@PostMapping
 	public String create(
@@ -49,6 +63,11 @@ public class CreateCardController {
 		cardRepo.save(productCard);
 		
 		}
+		
+		List<ProductCard> allCards = cardRepo.findAll();
+		
+		model.addAttribute("cards", allCards);
+		
 		return "createcard";
 	}
 	

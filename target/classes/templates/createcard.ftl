@@ -1,7 +1,7 @@
 <#import "parts/common.ftl" as c>
+<#import "parts/productCardReadOnly.ftl" as prod>
 
 <@c.page>
-
 	<form method="post" enctype="multipart/form-data">
 	<div ng-app="AppNewCard" ng-controller="ControllerNewCard">
 	<div class="form-row">
@@ -96,8 +96,8 @@
   	<button type="button" class="btn btn-primary" ng-model="testApiButton" ng-click="sendHttpToImgBB()">TEST</button> --> <!-- TRYING TO CONFIGURATE API -->
   	<button type="submit" class="btn btn-primary">Create</button>
   	
-  	<div class="row d-flex justify-content-center align-items-center m-2" style="background-color:#DCECFC;">
-		<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
+  	<div class="row d-flex justify-content-center align-items-center m-2">
+		<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #022601;">
   		<img class="card-img-top" ng-src={{product.img}} alt="EXAMPLE IMG" style="background-color: white;">
   			<div class="card-body" style="background-color: white;">
     			<h5 class="card-title">{{product.name}}</h5>
@@ -133,5 +133,20 @@
   	</div>
   	<input type="hidden" name="_csrf" value="${_csrf.token}" />
 	</form>
+	
+		<@prod.cardReadOnly category="MEATANDPOULTRY"	cards=cards/>
+		<@prod.cardReadOnly category="FISH"				cards=cards/>
+		<@prod.cardReadOnly category="SEAFOOD"			cards=cards/>
+		<@prod.cardReadOnly category="VEGETABLES"		cards=cards/>
+		<@prod.cardReadOnly category="FRUITS"			cards=cards/>
+		<@prod.cardReadOnly category="BERRIES"			cards=cards/>
+		<@prod.cardReadOnly category="GREENS"			cards=cards/>
+		<@prod.cardReadOnly category="MUSHROOMS"		cards=cards/>
+		<@prod.cardReadOnly category="GROATS"			cards=cards/>
+		<@prod.cardReadOnly category="EGGS"				cards=cards/>
+		<@prod.cardReadOnly category="DAIRY"			cards=cards/>
+		<@prod.cardReadOnly category="FLOUR"			cards=cards/>
+		<@prod.cardReadOnly category="DRINKS"			cards=cards/>
+		<@prod.cardReadOnly category="OTHER"			cards=cards/>
 	
 </@c.page>

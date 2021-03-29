@@ -1,5 +1,6 @@
 package com.chukuobody.app.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
@@ -9,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class SelectedCards {
+public class SelectedCards implements Serializable{
+
+	private static final long serialVersionUID = 4329894596061081436L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

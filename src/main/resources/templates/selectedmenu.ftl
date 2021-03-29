@@ -68,7 +68,7 @@
 <h2 class="text-center">Breakfast</h2>
 <div class="row">
 	<#list breakfastCards as card>
-			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
+			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #022601;">
 	  			<img class="card-img-top" src="${card.card.fileName}" alt="${card.card.name}" style="background-color: white;">
 	  				<div class="card-body" style="background-color: white;">
 	    				<h5 class="card-title">${card.card.name}</h5>
@@ -101,7 +101,7 @@
 <h2 class="text-center">Brunch</h2>
 <div class="row">
 	<#list brunchCards as card>
-			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
+			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #022601;">
 	  			<img class="card-img-top" src="${card.card.fileName}" alt="${card.card.name}" style="background-color: white;">
 	  				<div class="card-body" style="background-color: white;">
 	    				<h5 class="card-title">${card.card.name}</h5>
@@ -134,7 +134,7 @@
 <h2 class="text-center">Lunch</h2>
 <div class="row">
 	<#list lunchCards as card>
-			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
+			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #022601;">
 	  			<img class="card-img-top" src="${card.card.fileName}" alt="${card.card.name}" style="background-color: white;">
 	  				<div class="card-body" style="background-color: white;">
 	    				<h5 class="card-title">${card.card.name}</h5>
@@ -167,7 +167,7 @@
 <h2 class="text-center">Linner</h2>
 <div class="row">
 	<#list linnerCards as card>
-			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
+			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #022601;">
 	  			<img class="card-img-top" src="${card.card.fileName}" alt="${card.card.name}" style="background-color: white;">
 	  				<div class="card-body" style="background-color: white;">
 	    				<h5 class="card-title">${card.card.name}</h5>
@@ -200,7 +200,7 @@
 <h2 class="text-center">Dinner</h2>
 <div class="row">
 	<#list dinnerCards as card>
-			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #B8DAFC;">
+			<div class="card m-1" style="width: 19.2%; max-height: 25%; border:2px solid #022601;">
 	  			<img class="card-img-top" src="${card.card.fileName}" alt="${card.card.name}" style="background-color: white;">
 	  				<div class="card-body" style="background-color: white;">
 	    				<h5 class="card-title">${card.card.name}</h5>

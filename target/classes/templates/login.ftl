@@ -5,7 +5,7 @@
 <h3>Login page</h3>
 
 <#if message??>
-	<div class="alert alert-warning mt-2" role="alert">
+	<div class="alert alert-${messageType} mt-2" role="alert">
 		 ${message}
 	</div>
 </#if>

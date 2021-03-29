@@ -30,7 +30,7 @@
     </div>
   <#if act!="Sign In">
   <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Password:</label>
+            <label class="col-sm-2 col-form-label">Password confirmation:</label>
             <div class="col-sm-6">
                 <input type="password" name="password2"
                        class="form-control ${(password2Error??)?string('is-invalid', '')}"
@@ -54,6 +54,16 @@
                     </div>
                 </#if>
             </div>
+        </div>
+        <div class="form-group row">
+	        <div class="col">
+		        <div class="g-recaptcha" data-sitekey="6LeBAJQaAAAAAOM8N18vAgc-z9QtvrBp8aT41c4_"></div>
+		        <#if errorReCaptcha??>
+		        	<p style="color: red;">
+			          ${errorReCaptcha}
+			        </p>
+		        </#if>
+	        </div>
         </div>
   </#if>
   <input type="hidden" name="_csrf" value="${_csrf.token}" />

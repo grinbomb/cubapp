@@ -1,13 +1,13 @@
 <#include "security.ftl">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"><h1 class="text-hide" style="background-image: url('https://i.ibb.co/s3DLrRy/1.png'); width: 50px; height: 50px;">CuB</h1></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <a class="navbar-brand" href="/"><h1 class="text-hide" style="background-image: url('https://i.ibb.co/X7fmzSP/logo.png'); width: 50px; height: 50px;">CuB</h1></a>
     
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="/calculator">Calculator</a>
@@ -46,7 +46,7 @@
 	            </#if>
 	            <#if isAuthorized>
 	            	<li class="nav-item">
-		                <a class="btn btn-outline-dark m-1" href="/user/profile" role="button">Settings</a>
+		                <a class="nav-link" href="/user/profile" >Settings</a>
 	            	</li>
 	   			 	<li class="nav-item">
 					    <form action="/logout" method="post">
