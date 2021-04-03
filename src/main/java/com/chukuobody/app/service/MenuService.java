@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.chukuobody.app.domain.ProductCard;
@@ -17,6 +18,7 @@ import com.chukuobody.app.domain.User;
 import com.chukuobody.app.repos.MenuRepo;
 
 @Service
+@Transactional
 public class MenuService {
 	
 	@Autowired
@@ -161,6 +163,15 @@ public class MenuService {
 		model.addAttribute("selectedDate", formatted);
 		
 		return model;
+	}
+
+	public void deleteByUser(User user) {
+		menuRepo.deleteByUser(user);
+		
+	}
+
+	public int countByUser(User user) {
+		return menuRepo.countByUser(user);
 	}
 
 }

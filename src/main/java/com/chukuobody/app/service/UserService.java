@@ -10,6 +10,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +19,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.chukuobody.app.domain.Role;
@@ -25,6 +27,7 @@ import com.chukuobody.app.domain.User;
 import com.chukuobody.app.repos.UserRepo;
 
 @Service
+@Transactional
 public class UserService implements UserDetailsService {
 
 	@Autowired
@@ -36,6 +39,9 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 	
+    @Value("${hostname}")
+    private String hostname;
+    
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByUsername(username);
@@ -70,8 +76,9 @@ public class UserService implements UserDetailsService {
 		if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Hello, %s! \n" +
-                            "Welcome to CubApp. Please, visit next link: http://localhost:8080/activate/%s",
+                            "Welcome to CubApp. Please, visit next link: http://%s/activate/%s",
                     user.getUsername(),
+                    hostname,
                     user.getActivationCode()
             );
 

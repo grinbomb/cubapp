@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chukuobody.app.domain.Role;
 import com.chukuobody.app.domain.User;
+import com.chukuobody.app.service.MenuService;
 import com.chukuobody.app.service.UserService;
 
 @Controller
@@ -22,6 +23,9 @@ import com.chukuobody.app.service.UserService;
 public class UserController {
     @Autowired
     private UserService userService;
+    
+    @Autowired
+    private MenuService menuService;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
@@ -51,6 +55,12 @@ public class UserController {
 			if(role.equals(Role.ADMIN)) {
 				return "redirect:/user";
 			}
+		}
+    	
+    	int countUsers = menuService.countByUser(userService.findById(id).get());
+    	
+    	for (int i = 0; i < countUsers; i++) {
+			menuService.deleteByUser(userService.findById(id).get());
 		}
     	
     	userService.deleteById(id);
