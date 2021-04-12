@@ -114,7 +114,7 @@
 
 <#if calories??>
 <div class="alert alert-warning mt-2" role="alert">
- For optimal weight loss or maintenance of normal weight, you need to consume <strong style="font-size:25px;">${calories}</strong> calories daily.
+ For ${optionForOutput} you need to consume <strong style="font-size:25px;">${calories}</strong> calories daily.
 </div>
 </#if>
 

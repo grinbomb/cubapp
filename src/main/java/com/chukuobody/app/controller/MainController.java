@@ -169,15 +169,19 @@ public class MainController {
 		else {
 			switch (calculationOption) {
 			case "normal":
+				model.addAttribute("optionForOutput", "maintaining a normal weight");
 				model.addAttribute("selectedNormalOption", "selected");
 				break;
 			case "muscle":
+				model.addAttribute("optionForOutput", "muscle gain");
 				model.addAttribute("selectedMuscleOption", "selected");
 				break;
 			case "fastloss":
+				model.addAttribute("optionForOutput", "fast weight loss");
 				model.addAttribute("selectedFastLossOption", "selected");
 				break;
 			case "slowloss":
+				model.addAttribute("optionForOutput", "slow weight loss");
 				model.addAttribute("selectedSlowLossOption", "selected");
 				break;
 			}
